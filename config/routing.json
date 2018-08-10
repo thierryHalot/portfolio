@@ -1,0 +1,15 @@
+{
+    "/": "DefaultController:getDefault",
+    "/login": "DefaultController:login",
+    "/logout": "DefaultController:logout",
+    "/token": "DefaultController:token",
+    "/api/default":{
+        "GET":"DefaultController:getDatasFromGET",
+        "POST":"DefaultController:getDatasFromPOST",
+        "PUT":"DefaultController:getDatasFromPUT",
+        "DELETE":"DefaultController:delete"
+    },
+    "/api/default/(:)":{
+        "GET":"DefaultController:getByValue"
+    }
+}
