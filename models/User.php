@@ -16,13 +16,13 @@ class User
     private $iduser;
     private $nom;
     private $prenom;
-    private $adresse;
-    private $mail;
-    private $tel;
-    private $statue;
+    private $statut;
     private $photo;
     private $description;
     private $lien_cv;
+    private $pseudo;
+    private $mdp;
+    private $coordonne_idcoordonne;
 
     /* getter et setter*/
 
@@ -57,44 +57,15 @@ class User
         $this->prenom = $val;
     }
 
-    public function getAdresse(){
 
-        return $this->adresse;
+    public function getStatut(){
+
+        return $this->statut;
     }
 
-    public function setAdresse($val){
+    public function setStatut($val){
 
-        $this->adresse = $val;
-    }
-
-    public function getMail(){
-
-        return $this->mail;
-    }
-
-    public function setMail($val){
-
-        $this->mail = $val;
-    }
-
-    public function getTel(){
-
-        return $this->tel;
-    }
-
-    public function setTel($val){
-
-        return $this->tel;
-    }
-
-    public function getStatue(){
-
-        return $this->statue;
-    }
-
-    public function setStatue($val){
-
-        $this->statue = $val;
+        $this->statut = $val;
     }
     public function getPhoto(){
 
@@ -124,5 +95,36 @@ class User
     public function setLien_cv($val){
 
         $this->lien_cv = $val;
+    }
+
+    public function getPseudo(){
+
+        return $this->pseudo;
+    }
+
+    public function setPseudo($val){
+
+        $this->pseudo = $val;
+    }
+
+    public function getMdp(){
+
+        return $this->mdp;
+    }
+
+    public function setMdp($val){
+
+        $this->mdp = $val;
+    }
+
+    public function getCoordonne()
+    {
+
+        return $this->coordonne_idcoordonne;
+    }
+
+    public function setCoordonne($val){
+
+        $this->coordonne_idcoordonne = $val;
     }
 }
