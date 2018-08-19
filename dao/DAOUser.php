@@ -10,6 +10,7 @@ namespace BWB\Framework\mvc\dao;
 
 
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Coordonne;
 use BWB\Framework\mvc\models\User;
 
 class DAOUser extends DAO
@@ -26,7 +27,7 @@ class DAOUser extends DAO
         $this->getPdo()->query($sql);
     }
 
-    //fonction qui recupere un utilisateur par rapport a son idée et renvoi un onject contenant toutes les imformations
+    //fonction qui recupere un utilisateur par rapport a son id et renvoi un onject contenant toutes les imformations
     public function retrieve($id)
     {
 
@@ -48,7 +49,27 @@ class DAOUser extends DAO
 
        return $entity;
     }
+//fonction qui recupere mes coordonnés par rapport à mon id
+    public function getCoordonne($id){
 
+        $sql = "SELECT * FROM user INNER JOIN coordonne ON coordonne.idcoordonne = user.iduser  WHERE iduser = ".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+foreach ($results as $result){
+            $entity = new Coordonne();
+            $entity->setIdCoordonne($result['idcoordonne']);
+            $entity->setMail($result['mail']);
+            $entity->setAdresse($result['adresse']);
+            $entity->setCode_postal($result['code_postal']);
+            $entity->setTel($result['tel']);
+            $entity->setVille($result['ville']);
+
+    return $entity;
+        }
+        
+    }
 
     public function update($array)
     {
