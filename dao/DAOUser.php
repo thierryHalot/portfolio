@@ -94,6 +94,19 @@ foreach ($results as $result){
         return $results;
 
     }
+
+    //fonction qui recupere toute mes expériences professionels
+    public function getExpPro($id){
+
+        $sql = "SELECT * FROM experience_pro WHERE user_iduser =".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+
+        return $results;
+
+    }
     public function update($array)
     {
         // TODO: Implement update() method.
