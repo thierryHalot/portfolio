@@ -21,6 +21,8 @@ class ControllerFront extends Controller
         $DaoUser = new DAOUser();
         $user = $DaoUser->retrieve(1);
 
+        $cordonne = $DaoUser->getCoordonne($user->getIduser());
+
 
 
 
@@ -28,6 +30,7 @@ class ControllerFront extends Controller
         $this->render("front", array(
 
             "user"=> $user,
+            "coordonne" => $cordonne,
         ));
     }
 
