@@ -24,6 +24,25 @@ class User
     private $mdp;
     private $coordonne_idcoordonne;
 
+
+    public function convertJson(){
+
+        // Créer un tableau de données
+        $tableau_pour_json = [
+
+            'id'=> $this->iduser,
+            'prenom'=> $this->prenom,
+            'nom'=> $this->nom,
+            'statut'=>$this->statut,
+            'photo' =>$this->photo,
+            'description'=>$this->description,
+            'lien_cv'=>$this->lien_cv,
+        ];
+
+// Convertir le tableau au format json
+        return json_encode($tableau_pour_json,JSON_FORCE_OBJECT);
+
+    }
     /* getter et setter*/
 
     public function getIduser(){
