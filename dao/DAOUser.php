@@ -82,6 +82,18 @@ foreach ($results as $result){
          return $results;
     }
 
+    //fonction qui recupere tous mes projets
+    public function getProjets($id){
+
+        $sql = "SELECT * FROM projets WHERE user_iduser =".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+
+        return $results;
+
+    }
     public function update($array)
     {
         // TODO: Implement update() method.
