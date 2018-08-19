@@ -31,4 +31,25 @@ class ControllerFront extends Controller
         ));
     }
 
+    public function get(){
+
+//recuperation des données me corespondant;
+        $DaoUser = new DAOUser();
+        $user = $DaoUser->retrieve(1);
+
+        $data = $user->convertJson();
+
+        $test = $this->inputGet();
+
+        $test['user'] = $data;
+
+
+        $this->render("front", array(
+
+            "user"=> $data,
+        ));
+         //echo $data;
+
+
+    }
 }
