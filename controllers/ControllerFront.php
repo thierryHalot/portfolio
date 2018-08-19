@@ -23,7 +23,7 @@ class ControllerFront extends Controller
 
         $cordonne = $DaoUser->getCoordonne($user->getIduser());
 
-
+        $projets = $DaoUser->getProjets($user->getIduser());
 
 
         //injection des données dans la vue
@@ -31,6 +31,7 @@ class ControllerFront extends Controller
 
             "user"=> $user,
             "coordonne" => $cordonne,
+            "projets" => $projets,
         ));
     }
 
