@@ -37,87 +37,42 @@
 
 </div>
 <br>
-
-<!-- Presentation -->
-<div class="container">
-    <h1><i class="fas fa-grin"></i></i>Qui suis-je ?</h1>
-    <br>
-<div>
-    <p>« Texte » est issu du mot latin « textum », dérivé du verbe « texere » qui signifie « tisser ». Le mot s'applique à l'entrelacement des fibres utilisées dans le tissage, voir par exemple Ovide : « Quo super iniecit textum rude sedula Baucis = (un siège) sur lequel Baucis empressée avait jeté un tissu grossier »2 ou au tressage (exemple chez Martial « Vimineum textum = panier d'osier tressé »). Le verbe a aussi le sens large de construire comme dans « basilicam texere = construire une basilique » chez Cicéron3.
-
-        Le sens figuré d'éléments de langage organisés et enchaînés apparaît avant l'Empire romain : il désigne un agencement particulier du discours. Exemple : « epistolas texere = composer des épîtres » - Cicéron (Ier siècle av. J.-C.)4 ou plus nettement chez Quintilien (Ier siècle apr. J.-C.) : « verba in textu jungantur = l'agencement des mots dans la phrase »5.
-
-        Les formes anciennes du Moyen Âge désignent au XIIe siècle le volume qui contient le texte sacré des Évangiles, puis au XIIIe siècle. le texte original d'un livre saint ou des propos de quelqu'un. Au XVIIe siècle le mot s’applique au passage d'un ouvrage pris comme référence et au début du XIXe siècle le mot texte a son sens général d'« écrit »6. </p>
-</div>
-    <div class="row">
-        <div class="col-md-3 col-xs-6">
-            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
-            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
-                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
-                oui archi séche</p>
-        </div>
-        <div class="col-md-3 col-xs-6">
-            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
-            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
-                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
-                oui archi séche</p>
-        </div>
-        <div class="col-md-3 col-xs-6">
-            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
-            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
-                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
-                oui archi séche</p>
-        </div>
-        <div class="col-md-3 col-xs-6">
-            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
-            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
-                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
-                oui archi séche</p>
-        </div>
-    </div>
-<br>
-    <form method="get" action="public/document/CV_Thierry_Halot.pdf">
-    <input type="submit" value="Télécharger mon cv" class="btn btn-primary float-lg-right" onclick="window.location='<?= "http://".$_SERVER['HTTP_HOST']."/public/document/CV_Thierry_Halot.pdf"  ?>';">
-        <br>
-    </form>
-</div>
-<br>
 <!-- Competence -->
 <div class="container">
     <br>
     <h1><i class="fas fa-arrow-alt-circle-up"></i>Mes Compétences</h1>
-<div>
-    <p>HTML</p>
-    <div class="fondBarProgresse" >
-        <div class="skills html" id="skillHtml">90%</div>
-    </div>
+    <div>
+        <p>HTML</p>
+        <div class="fondBarProgresse" >
+            <div class="skills html" id="skillHtml">90%</div>
+        </div>
 
-    <p>CSS</p>
-    <div class="fondBarProgresse">
-        <div class="skills css" id="skillCss">80%</div>
-    </div>
+        <p>CSS</p>
+        <div class="fondBarProgresse">
+            <div class="skills css" id="skillCss">80%</div>
+        </div>
 
-    <p>JavaScript</p>
-    <div class="fondBarProgresse">
-        <div class="skills js" id="skillJs">65%</div>
+        <p>JavaScript</p>
+        <div class="fondBarProgresse">
+            <div class="skills js" id="skillJs">65%</div>
+        </div>
+        <p>Ajax</p>
+        <div class="fondBarProgresse">
+            <div class="skills ajax" id="skillAjax">65%</div>
+        </div>
+        <p>PHP</p>
+        <div class="fondBarProgresse">
+            <div class="skills php" id="skillPhp">60%</div>
+        </div>
+        <p>Symfony</p>
+        <div class="fondBarProgresse">
+            <div class="skills symfony" id="skillSymfony">60%</div>
+        </div>
+        <p>SQL</p>
+        <div class="fondBarProgresse">
+            <div class="skills sql" id="skillSql">60%</div>
+        </div>
     </div>
-    <p>Ajax</p>
-    <div class="fondBarProgresse">
-        <div class="skills ajax" id="skillAjax">65%</div>
-    </div>
-    <p>PHP</p>
-    <div class="fondBarProgresse">
-        <div class="skills php" id="skillPhp">60%</div>
-    </div>
-    <p>Symfony</p>
-    <div class="fondBarProgresse">
-        <div class="skills symfony" id="skillSymfony">60%</div>
-    </div>
-    <p>SQL</p>
-    <div class="fondBarProgresse">
-        <div class="skills sql" id="skillSql">60%</div>
-    </div>
-</div>
 </div>
 <br>
 <!-- Projets -->
@@ -175,6 +130,51 @@
     </div>
 </div>
 <br>
+
+<!-- Presentation -->
+<div class="container">
+    <h1><i class="fas fa-grin"></i></i>Qui suis-je ?</h1>
+    <br>
+<div>
+    <p>« Texte » est issu du mot latin « textum », dérivé du verbe « texere » qui signifie « tisser ». Le mot s'applique à l'entrelacement des fibres utilisées dans le tissage, voir par exemple Ovide : « Quo super iniecit textum rude sedula Baucis = (un siège) sur lequel Baucis empressée avait jeté un tissu grossier »2 ou au tressage (exemple chez Martial « Vimineum textum = panier d'osier tressé »). Le verbe a aussi le sens large de construire comme dans « basilicam texere = construire une basilique » chez Cicéron3.
+
+        Le sens figuré d'éléments de langage organisés et enchaînés apparaît avant l'Empire romain : il désigne un agencement particulier du discours. Exemple : « epistolas texere = composer des épîtres » - Cicéron (Ier siècle av. J.-C.)4 ou plus nettement chez Quintilien (Ier siècle apr. J.-C.) : « verba in textu jungantur = l'agencement des mots dans la phrase »5.
+
+        Les formes anciennes du Moyen Âge désignent au XIIe siècle le volume qui contient le texte sacré des Évangiles, puis au XIIIe siècle. le texte original d'un livre saint ou des propos de quelqu'un. Au XVIIe siècle le mot s’applique au passage d'un ouvrage pris comme référence et au début du XIXe siècle le mot texte a son sens général d'« écrit »6. </p>
+</div>
+    <div class="row">
+        <div class="col-md-3 col-xs-6">
+            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
+            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
+                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
+                oui archi séche</p>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
+            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
+                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
+                oui archi séche</p>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
+            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
+                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
+                oui archi séche</p>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
+            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
+                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
+                oui archi séche</p>
+        </div>
+    </div>
+<br>
+    <form method="get" action="public/document/CV_Thierry_Halot.pdf">
+    <input type="submit" value="Télécharger mon cv" class="btn btn-primary float-lg-right" onclick="window.location='<?= "http://".$_SERVER['HTTP_HOST']."/public/document/CV_Thierry_Halot.pdf"  ?>';">
+        <br>
+    </form>
+</div>
+
 <!-- Contact -->
 <div class="container">
     <h1><i class="far fa-id-card"></i>Contact</h1>
