@@ -68,7 +68,18 @@ foreach ($results as $result){
 
     return $entity;
         }
-        
+
+    }
+//fonction qui recupère tous mes diplomes
+    public function getDiplomes($id){
+
+        $sql = "SELECT * FROM diplomes WHERE user_iduser =".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+
+         return $results;
     }
 
     public function update($array)
