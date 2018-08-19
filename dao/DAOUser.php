@@ -49,6 +49,7 @@ class DAOUser extends DAO
        return $entity;
     }
 
+
     public function update($array)
     {
         // TODO: Implement update() method.
