@@ -38,7 +38,7 @@
         <h1 style="padding-left: 40%;">Maintenir </h1>
     </div>
     <br>
-    <h1 class="text-center">(En recherche d'un stage)</h1>
+    <h1 class="text-center">(<?= $user->getStatut() ?>)</h1>
 </div>
 
 <!-- Competence -->
@@ -188,12 +188,12 @@
         <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
         <div class="media-body align-self-center">
            <p>
-               Nom:<br>
-               Prenom:<br>
-               Tel:<br>
-               Adresse:<br>
-               Code postal:<br>
-               Ville:<br>
+               Nom: <?= $user->getNom() ?><br>
+               Prenom: <?= $user->getPrenom() ?><br>
+               Tel: <?= $coordonne->getTel() ?> <br>
+               Adresse: <?= $coordonne->getAdresse() ?><br>
+               Code postal: <?= $coordonne->getCode_postal() ?><br>
+               Ville: <?= $coordonne->getVille() ?><br>
            </p>
         </div>
     </div>
@@ -232,10 +232,10 @@
 <footer>
 <div class="container contenue">
     <div class="text-center center-block">
-        <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
-        <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
-        <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-linkedin-square fa-3x social"></i></a>
-        <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-github fa-3x social"></i></a>
+        <a href="https://www.facebook.com/thierry.halot.39"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+        <a href="https://twitter.com/HalotThierry"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+        <a href="https://fr.linkedin.com/in/thierry-halot-491121160"><i id="social-gp" class="fa fa-linkedin-square fa-3x social"></i></a>
+        <a href="https://github.com/thierryHalot"><i id="social-em" class="fa fa-github fa-3x social"></i></a>
     </div>
     <hr>
 </div>
