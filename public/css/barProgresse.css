@@ -1,0 +1,49 @@
+.skills {
+    padding: 10px; /* Add some padding */
+    color: white; /* White text color */
+}
+.fondBarProgresse{
+    width: 100%;
+    background-color: #dddddd;
+}
+.html {
+
+    background-color: #4CAF50;
+    text-align: center;
+    color: white;
+} /* Green */
+.css {
+
+    background-color: #2196F3;
+    text-align: center;
+    color: white;
+} /* Blue */
+.js {
+
+    background-color: #f44336;
+    text-align: center;
+    color: white;
+} /* Red */
+.php {
+
+    background-color: #808080;
+    text-align: center;
+    color: white;
+} /* Dark Grey */
+.ajax{
+    background-color: #00807e;
+    text-align: center;
+    color: white;
+
+}
+.symfony{
+    background-color: #408063;
+    text-align: center;
+    color: white;
+
+}
+.sql{
+    background-color: #5d3c80;
+    text-align: center;
+    color: white;
+}
