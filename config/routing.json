@@ -2,8 +2,15 @@
     "/": "ControllerFront:getView",
     "/admin": "ControllerBack:getView",
     "/login": "DefaultController:login",
+    "/toto": "ControllerFront:get",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
+    "/api/user":{
+        "GET":"ControllerFront:get",
+        "POST":"DefaultController:getDatasFromPOST",
+        "PUT":"DefaultController:getDatasFromPUT",
+        "DELETE":"DefaultController:delete"
+    },
     "/api/default":{
         "GET":"DefaultController:getDatasFromGET",
         "POST":"DefaultController:getDatasFromPOST",
