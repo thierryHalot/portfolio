@@ -110,29 +110,52 @@
         </div>
     </div>
     <br>
+    <!-- Test insertion projet de maniere dynamique-->
     <div class="row">
+        <?php foreach ($projets as $projet):?>
         <div class="col-md-4">
-            <div class="card">
-                <h1 class="card-title text-center">Nom projet</h1>
-                <img class="card-img img-responsive" src="public/img/photo.jpg" alt="photoAccueil" />
 
-            </div>
-        </div>
-        <div class="col-md-4">
             <div class="card">
-                <h1 class="card-title text-center">Nom projet</h1>
+                <h1 class="card-title text-center"><?= $projet['nom'] ?></h1>
                 <img class="card-img img-responsive" src="public/img/photo.jpg" alt="photoAccueil" />
+                <div class="card-body">
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">
+                    plus d'info !
+                </button>
+                </div>
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
 
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <h1 class="card-title text-center">Nom projet</h1>
-                <img class="card-img img-responsive" src="public/img/photo.jpg" alt="photoAccueil" />
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title"><?= $projet['nom'] ?></h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
 
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                               <h6>date:  </h6>
+                                <h6>Type: <?= $projet['type'] ?> </h6>
+                                <h6>Techno utilisé: <?= $projet['techno'] ?> </h6>
+                                <h6>fonctionnalité: </h6>
+                                <p>description:</p>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <a href="https://github.com/thierryHalot" class="float-left btn btn-primary">Voir sur GitHub</a>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
+            </div>
+        <?php endforeach; ?>
         </div>
-    </div>
+
 </div>
 
 
