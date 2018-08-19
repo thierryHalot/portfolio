@@ -10,5 +10,6 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="/public/css/barProgresse.css">
+    <link rel="stylesheet" href="/public/css/app.css">
 </head>
 <body>

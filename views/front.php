@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" >
     <a class="navbar-brand" href="#">Accueil</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,23 +22,27 @@
     </div>
 </nav>
 
-<!-- Accueil -->
-
-<div class="container">
-    <div class="block col-xs-4">
-        <div class="card"><img class="card-img img-responsive" src="public/img/photo.jpg" alt="photoAccueil" />
-                <h1 class="card-title text-center">Thierry Halot</h1>
-            <h1 class="card-title text-center">Développeur logiciel</h1>
-                <p class="card-text text-center">(En recherche d'un stage)</p>
+<!-- Nouvelle page Acuueil-->
+<div class="container contenue">
+    <div class="media ">
+        <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
+        <div class="media-body align-self-center">
+                <h1>Thierry Halot</h1>
+            <h1>Développeur Junior</h1>
         </div>
     </div>
-
-
-
+    <br>
+    <div class="offset-md-6 col-md-4">
+        <h1>Concevoir </h1>
+        <h1 style="padding-left: 20%;">Réaliser</h1>
+        <h1 style="padding-left: 40%;">Maintenir </h1>
+    </div>
+    <br>
+    <h1 class="text-center">(En recherche d'un stage)</h1>
 </div>
-<br>
+    <br>
 <!-- Competence -->
-<div class="container">
+<div class="container contenue">
     <br>
     <h1><i class="fas fa-arrow-alt-circle-up"></i>Mes Compétences</h1>
     <div>
@@ -76,7 +80,7 @@
 </div>
 <br>
 <!-- Projets -->
-<div class="container">
+<div class="container contenue">
     <h1><i class="fas fa-book-reader"></i>Mes Projets</h1>
     <br>
     <div class="row">
@@ -132,7 +136,7 @@
 <br>
 
 <!-- Presentation -->
-<div class="container">
+<div class="container contenue">
     <h1><i class="fas fa-grin"></i></i>Qui suis-je ?</h1>
     <br>
 <div>
@@ -176,12 +180,12 @@
 </div>
 
 <!-- Contact -->
-<div class="container">
+<div class="container contenue">
     <h1><i class="far fa-id-card"></i>Contact</h1>
     <br>
     <div class="media">
-        <img class="mr-3" src="public/img/petit.jpg" alt="Generic placeholder image">
-        <div class="media-body">
+        <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
+        <div class="media-body align-self-center">
            <p>
                Nom:<br>
                Prenom:<br>
@@ -219,13 +223,13 @@
             <textarea class="form-control" rows="5" id="messageContact" name="text"></textarea>
         </div>
         <div>
-        <button type="submit" class="btn btn-primary float-right">Submit</button>
+        <button type="submit" class="btn btn-primary float-right">Envoyer</button>
             <br>
         </div>
     </form>
 </div>
 <footer>
-<div class="container">
+<div class="container contenue">
     <div class="text-center center-block">
         <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
         <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
