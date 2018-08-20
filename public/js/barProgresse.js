@@ -7,7 +7,7 @@ function framePerso(progress, id, time) {
 
     var elem = document.getElementById(id);
     var width = 1;
-    //toute les time milliseconde j'execute la methode frame (function evenement)
+    //toute les time milliseconde j'execute la cette fonction anonyme (function evenement)
     var interval = setInterval(() => {
 
 
@@ -29,7 +29,7 @@ function framePerso(progress, id, time) {
 var height = $(window).height();
 
 //si l'utilisateur descend en dessous des 100 px , j'affiche l'animation de mes bar de progression
-if (height > 800) {
+if (height > 200) {
 
     framePerso(90,"skillHtml",50);
     framePerso(80,"skillCss",40);
