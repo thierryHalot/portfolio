@@ -30,17 +30,17 @@ class User
         // Créer un tableau de données
         $tableau_pour_json = [
 
-            'id'=> $this->iduser,
-            'prenom'=> $this->prenom,
-            'nom'=> $this->nom,
-            'statut'=>$this->statut,
-            'photo' =>$this->photo,
-            'description'=>$this->description,
-            'lien_cv'=>$this->lien_cv,
+            "id"=>$this->iduser,
+            "prenom"=>$this->prenom,
+            "nom"=>$this->nom,
+            "statut"=>$this->statut,
+            "photo" =>$this->photo,
+            "description"=>$this->description,
+            "lien_cv"=>$this->lien_cv
         ];
 
 // Convertir le tableau au format json
-        return json_encode($tableau_pour_json,JSON_FORCE_OBJECT);
+        return json_encode($tableau_pour_json);
 
     }
     /* getter et setter*/
