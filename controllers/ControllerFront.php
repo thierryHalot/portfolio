@@ -13,6 +13,8 @@ use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\models\User;
 
+
+
 class ControllerFront extends Controller
 {
     public function getView(){
@@ -25,10 +27,12 @@ class ControllerFront extends Controller
 
         $projets = $DaoUser->getProjets($user->getIduser());
 
-
+        $top = file_get_contents("views/template/top.php");
+        $bottom = file_get_contents("views/template/bottom.php");
         //injection des données dans la vue
         $this->render("front", array(
-
+            "top" => $top,
+            "bottom"=> $bottom,
             "user"=> $user,
             "coordonne" => $cordonne,
             "projets" => $projets,
@@ -46,12 +50,15 @@ class ControllerFront extends Controller
         $test = $this->inputGet();
 
         $test['user'] = $data;
+        header('Content-Type: application/json');
+        echo $data;
 
 
-        $this->render("front", array(
 
-            "user"=> $data,
-        ));
+//        $this->render("front", array(
+//
+//            "user"=> $data,
+//        ));
          //echo $data;
 
 
