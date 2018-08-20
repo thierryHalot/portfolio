@@ -1,3 +1,4 @@
+<?= $top ?>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" >
     <a class="navbar-brand" href="#">Accueil</a>
@@ -160,7 +161,7 @@
 
 
 <!-- Presentation -->
-<div class="container contenue" id="presentation">
+<div class="container contenue" id="presentation" >
     <h1><i class="fas fa-grin"></i></i>Qui suis-je ?</h1>
     <br>
 <div>
@@ -263,3 +264,4 @@
     <hr>
 </div>
 </footer>
+<?= $bottom ?>
