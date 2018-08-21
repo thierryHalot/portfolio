@@ -35,10 +35,15 @@ class DAOProjets extends DAO
     }
 
     //fonction qui permet de mettre un jour un projet
-    public function update($array)
+    public function update($entity)
     {
-        // TODO: Implement update() method.
+
+       $sql = "UPDATE projets SET nom= '".$entity->getNom()."', description='".$entity->getDescription()."', img='".$entity->getImg()."', techno='".$entity->getTechno()."',type='".$entity->getType()."', lien_git='".$entity->getLien_git()."',user_iduser=".$entity->getUser_iduser().", date='".$entity->getDate()."' WHERE idprojets = ". $entity->getIdprojet();
+        $this->getPdo()->query($sql);
+        
     }
+
+
 
     //fonction qui permet de supprimer un projet
     public function delete($id)
