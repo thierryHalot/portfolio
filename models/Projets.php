@@ -20,10 +20,20 @@ class Projets
     private $techno;
     private $type;
     private $lien_git;
+    private $date;
     private $user_iduser;
 
     /* getter et setter*/
 
+    public function getDate(){
+
+        return $this->date;
+    }
+    public function setDate($val){
+
+
+        $this->date = $val;
+    }
     public function getIdprojet(){
 
         return $this->idprojets;
