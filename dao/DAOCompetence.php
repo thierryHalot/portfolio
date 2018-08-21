@@ -36,9 +36,11 @@ class DAOCompetence extends DAO
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui permet de supprimer une competence
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $sql = "DELETE FROM competence WHERE idcompetence= " . $id;
+        $this->getPdo()->query($sql);
     }
 
     public function getAll()
