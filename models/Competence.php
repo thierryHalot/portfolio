@@ -19,9 +19,19 @@ class Competence
     private $nom;
     private $logo;
     private $user_iduser;
+    private $progression;
 
     /* getter et setter*/
 
+    public function getProgression(){
+
+        return $this->progression;
+    }
+
+    public function setProgression($val){
+
+        $this->progression = $val;
+    }
     public function getIdcompetence(){
 
         return $this->idcompetence;
