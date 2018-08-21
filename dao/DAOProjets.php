@@ -40,7 +40,7 @@ class DAOProjets extends DAO
 
        $sql = "UPDATE projets SET nom= '".$entity->getNom()."', description='".$entity->getDescription()."', img='".$entity->getImg()."', techno='".$entity->getTechno()."',type='".$entity->getType()."', lien_git='".$entity->getLien_git()."',user_iduser=".$entity->getUser_iduser().", date='".$entity->getDate()."' WHERE idprojets = ". $entity->getIdprojet();
         $this->getPdo()->query($sql);
-        
+
     }
 
 
@@ -48,7 +48,9 @@ class DAOProjets extends DAO
     //fonction qui permet de supprimer un projet
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $sql = "DELETE FROM projets WHERE idprojets= " . $id;
+        $this->getPdo()->query($sql);
+
     }
 
     public function getAll()
