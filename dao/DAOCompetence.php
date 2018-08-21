@@ -20,7 +20,7 @@ class DAOCompetence extends DAO
 
         $sql = "INSERT INTO competence (nom,logo,user_iduser,progression) VALUES('".$entity->getNom()."','".$entity->getLogo()."',".$entity->getUser_idser().",".$entity->getProgression().")";
         $this->getPdo()->query($sql);
-       
+
     }
 
     public function retrieve($id)
@@ -28,9 +28,12 @@ class DAOCompetence extends DAO
         // TODO: Implement retrieve() method.
     }
 
-    public function update($array)
+    //fonction qui permet de mettre a jour une competence
+    public function update($entity)
     {
-        // TODO: Implement update() method.
+
+        $sql = "UPDATE competence SET nom= '".$entity->getNom()."', user_iduser =".$entity->getUser_idser().", progression=".$entity->getProgression()." WHERE idcompetence = ". $entity->getIdcompetence();
+        $this->getPdo()->query($sql);
     }
 
     public function delete($id)
