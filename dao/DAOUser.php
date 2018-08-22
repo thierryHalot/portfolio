@@ -25,7 +25,7 @@ class DAOUser extends DAO
         $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, coordonne_idcoordonne ) VALUES('" . $entity->getNom() . "','". $entity->getPrenom() . "','" . $entity->getStatut() . "','" . $entity->getPhoto() . "','" . $entity->getDescription() . "','" . $entity->getLien_cv() . "','". $entity->getPseudo() . "','". $entity->getMdp() . "',". $entity->getCoordonne() .")";
 
         $this->getPdo()->query($sql);
-        
+
     }
 
     //fonction qui recupere un utilisateur par rapport a son id et renvoi un onject contenant toutes les imformations
@@ -108,9 +108,13 @@ foreach ($results as $result){
         return $results;
 
     }
-    public function update($array)
+
+    //fonction qui met a jour un uttilisateur
+    public function update($entity)
     {
-        // TODO: Implement update() method.
+
+        $sql = "UPDATE user SET nom= '".$entity->getNom()."', prenom='".$entity->getPrenom()."', statut='".$entity->getStatut()."', photo='".$entity->getPhoto()."',description='".$entity->getDescription()."', lien_cv='".$entity->getLien_cv()."',pseudo='".$entity->getPseudo()."', mdp='".$entity->getMdp()."', coordonne_idcoordonne=".$entity->getCoordonne()." WHERE iduser = ". $entity->getIduser();
+        $this->getPdo()->query($sql);
     }
 
     public function delete($id)
