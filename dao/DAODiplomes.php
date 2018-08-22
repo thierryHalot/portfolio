@@ -35,9 +35,11 @@ class DAODiplomes extends DAO
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui permet de supprimmer un diplomes
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $sql = "DELETE FROM diplomes WHERE iddiplomes= " . $id;
+        $this->getPdo()->query($sql);
     }
 
     public function getAll()
