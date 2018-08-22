@@ -27,10 +27,13 @@ class DAOCoordonne extends DAO
     {
         // TODO: Implement retrieve() method.
     }
-
-    public function update($array)
+//fonction qui permet de mettre a jour une coordonne
+    public function update($entity)
     {
-        // TODO: Implement update() method.
+        
+        $sql = "UPDATE coordonne SET code_postal=".$entity->getCode_postal().", ville='".$entity->getVille()."', adresse='".$entity->getAdresse()."', tel=".$entity->getTel().", mail='".$entity->getMail()."' WHERE idcoordonne = ". $entity->getIdcoordonne();
+        $this->getPdo()->query($sql);
+
     }
 
     public function delete($id)
