@@ -38,7 +38,8 @@ class DAOCompte_reseaux extends DAO
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $sql = "DELETE FROM compte_reseaux WHERE idcompte_reseaux= " . $id;
+        $this->getPdo()->query($sql);
     }
 
     public function getAll()
