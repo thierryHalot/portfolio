@@ -30,15 +30,17 @@ class DAOCoordonne extends DAO
 //fonction qui permet de mettre a jour une coordonne
     public function update($entity)
     {
-        
+
         $sql = "UPDATE coordonne SET code_postal=".$entity->getCode_postal().", ville='".$entity->getVille()."', adresse='".$entity->getAdresse()."', tel=".$entity->getTel().", mail='".$entity->getMail()."' WHERE idcoordonne = ". $entity->getIdcoordonne();
         $this->getPdo()->query($sql);
 
     }
 
+    //fonction qui permet de supprimer une coordonne
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $sql = "DELETE FROM coordonne WHERE idcoordonne= " . $id;
+        $this->getPdo()->query($sql);
     }
 
     public function getAll()
