@@ -22,9 +22,10 @@ class DAOUser extends DAO
 //fonction qui cree un nouvelle utilisateur
     public function create($entity)
     {
-        $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, coordonne_idcoordonne ) VALUES('" . $entity->getNom() . ',' . $entity->getPrenom() . ',' . $entity->getStatut() . ',' . $entity->getPhoto() . ',' . $entity->getDescription() . ',' . $entity->getLien_cv() . ','. $entity->getPseudo() . ','. $entity->getMdp() . ','. $entity->getCoordonne() . "')";
+        $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, coordonne_idcoordonne ) VALUES('" . $entity->getNom() . "','". $entity->getPrenom() . "','" . $entity->getStatut() . "','" . $entity->getPhoto() . "','" . $entity->getDescription() . "','" . $entity->getLien_cv() . "','". $entity->getPseudo() . "','". $entity->getMdp() . "',". $entity->getCoordonne() .")";
 
         $this->getPdo()->query($sql);
+        
     }
 
     //fonction qui recupere un utilisateur par rapport a son id et renvoi un onject contenant toutes les imformations
