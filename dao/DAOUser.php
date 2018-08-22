@@ -109,7 +109,7 @@ foreach ($results as $result){
 
     }
 
-    //fonction qui met a jour un uttilisateur
+    //fonction qui met a jour un utilisateur
     public function update($entity)
     {
 
@@ -117,9 +117,12 @@ foreach ($results as $result){
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui supprimme un utilisateur
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+
+        $sql = "DELETE FROM user WHERE iduser= " . $id;
+        $this->getPdo()->query($sql);
     }
 
     public function getAll()
