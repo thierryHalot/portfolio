@@ -27,9 +27,13 @@ class DAOCompte_reseaux extends DAO
         // TODO: Implement retrieve() method.
     }
 
-    public function update($array)
+    //fonction qui permet de mettre à jour un compte reseaux
+    public function update($entity)
     {
-        // TODO: Implement update() method.
+
+        $sql = "UPDATE compte_reseaux SET lien= '".$entity->getLien()."', img ='".$entity->getImg()."', user_iduser=".$entity->getUser_iduser().",nom='".$entity->getNom()."' WHERE idcompte_reseaux = ". $entity->getIdcompte_reseaux();
+        $this->getPdo()->query($sql);
+
     }
 
     public function delete($id)
