@@ -23,14 +23,19 @@ class DaoExp_pro extends DAO
 
     }
 
+
     public function retrieve($id)
     {
+
         // TODO: Implement retrieve() method.
     }
 
-    public function update($array)
+    //fonction qui permet de mettre a jour une exp pro
+    public function update($entity)
     {
-        // TODO: Implement update() method.
+
+        $sql = "UPDATE experience_pro SET date_entrer= '".$entity->getDate_entrer()."', date_sortie ='".$entity->getDate_sortie()."', description='".$entity->getDescription()."', user_iduser=".$entity->getUser_iduser().", nom_boite='".$entity->getNom_boite()."' WHERE idexperience_pro = ". $entity->getIdexperience_pro();
+        $this->getPdo()->query($sql);
     }
 
     public function delete($id)
