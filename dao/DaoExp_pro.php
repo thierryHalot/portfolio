@@ -38,9 +38,11 @@ class DaoExp_pro extends DAO
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui supprime une experience pro
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $sql = "DELETE FROM experience_pro WHERE idexperience_pro= " . $id;
+        $this->getPdo()->query($sql);
     }
 
     public function getAll()
