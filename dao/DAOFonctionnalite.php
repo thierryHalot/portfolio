@@ -26,9 +26,21 @@ class DAOFonctionnalite extends DAO
 
     }
 
+    //fonction qui permet de récupérer une fonctionalite par raport a son id et qui retourne une entité
     public function retrieve($id)
     {
-        // TODO: Implement retrieve() method.
+
+        $sql = "SELECT * FROM fonctionalite WHERE idfonctionalite =" . $id;
+        $statement = $this->getPdo()->query($sql);
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        $entity = new Fonctionnalite();
+        $entity->setNom($result['nom']);
+        $entity->setDescription($result['description']);
+        $entity->setIdProjet((int)$result['projets_idprojets']);
+        $entity->setId_fonctionnalite((int)$result['idfonctionalite']);
+        return $entity;
+
     }
 
     //fonction qui permet de mettre à jour une fonctionalité
