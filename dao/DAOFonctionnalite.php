@@ -40,9 +40,11 @@ class DAOFonctionnalite extends DAO
 
     }
 
+    //fonction qui permet de supprimmer une fonctionnalité
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $sql = "DELETE FROM fonctionalite WHERE idfonctionalite = " . $id;
+        $this->getPdo()->query($sql);
     }
 
     public function getAll()
