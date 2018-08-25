@@ -22,7 +22,11 @@ class User
     private $lien_cv;
     private $pseudo;
     private $mdp;
-    private $coordonne_idcoordonne;
+    private $code_postal;
+    private $ville;
+    private $adresse;
+    private $tel;
+    private $mail;
 
 
     public function convertJson(){
@@ -136,14 +140,52 @@ class User
         $this->mdp = $val;
     }
 
-    public function getCoordonne()
-    {
+    public function getCode_postal(){
 
-        return $this->coordonne_idcoordonne;
+        return $this->code_postal;
     }
 
-    public function setCoordonne($val){
+    public function setCode_postal($val){
 
-        $this->coordonne_idcoordonne = $val;
+        $this->code_postal = $val;
+    }
+    public function getVille(){
+
+        return $this->ville;
+    }
+
+    public function setVille($val){
+
+        $this->ville = $val;
+    }
+
+    public function getAdresse(){
+
+        return $this->adresse;
+    }
+
+    public function setAdresse($val){
+
+        $this->adresse = $val;
+    }
+
+    public function getMail(){
+
+        return $this->mail;
+    }
+
+    public function setMail($val){
+
+        $this->mail = $val;
+    }
+
+    public function getTel(){
+
+        return $this->tel;
+    }
+
+    public function setTel($val){
+
+        $this->tel = "0".$val;
     }
 }
