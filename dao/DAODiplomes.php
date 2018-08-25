@@ -82,9 +82,50 @@ class DAODiplomes extends DAO
         return $entities;
     }
 
+    //fonction qui permet de retrouver un ou des diplomes par rapport a une colonne
+    //prend en argument un tableau associatif corespondant a l'element que je souhaite rechercher :
+    // la clé coressespondant à la colonne que l'on souhaite recherche
+    // en valeur : la valeur qui nous interresse
+    //retourne un tableau peuplé des entité correspond a ma recherche
     public function getAllBy($filter)
     {
-        // TODO: Implement getAllBy() method.
+        $sql = "SELECT * FROM diplomes";
+        $i = 0;
+
+        //je boucle dans mon tableau
+        foreach($filter as $key => $value){
+
+//a la premiere iteration  je concataine ma variable $sql avec " WHERE " suivie de la clé /valeur de $filter"
+            if($i===0){
+                $sql .= " WHERE ";
+//a toute les autres itération je rajoute des "AND" suivi des clée/valeur dans le cas d'une recherche plus poussé
+            } else {
+                $sql .= " AND ";
+            }
+            $sql .= $key . " = '" . addslashes($value) . "'";
+
+            $i++;
+        };
+
+        $entities = array();
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        foreach($results as $result){
+
+            $entity = new Diplome();
+            $entity->setDate_debut((int)$result['date_debut']);
+            $entity->setDate_fin((int)$result['date_fin']);
+            $entity->setNom($result['nom']);
+            $entity->setDescription($result['description']);
+            $entity->setNom_ecole($result['nom_ecole']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+
+            $entity->setIddiplome((int)$result['iddiplomes']);
+
+            array_push($entities,$entity);
+        };
+
+        return $entities;
     }
 
 }
