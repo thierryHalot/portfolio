@@ -139,10 +139,57 @@ class DAOUser extends DAO
         }
         return $entities;
     }
-
+    //fonction qui permet de retrouver un/des uttilisateur(s)
+    //prend en argument un tableau associatif corespondant a l'element que je souhaite rechercher :
+    // la clé coressespondant à la colonne que l'on souhaite recherche
+    // en valeur : la valeur qui nous interresse
+    //retourne un tableau peuplé des entité correspond a ma recherche
     public function getAllBy($filter)
     {
-        // TODO: Implement getAllBy() method.
+        $sql = "SELECT * FROM user";
+        $i = 0;
+
+        //je boucle dans mon tableau
+        foreach($filter as $key => $value){
+
+//a la premiere iteration  je concataine ma variable $sql avec " WHERE " suivie de la clé /valeur de $filter"
+            if($i===0){
+                $sql .= " WHERE ";
+//a toute les autres itération je rajoute des "AND" suivi des clée/valeur dans le cas d'une recherche plus poussé
+            } else {
+                $sql .= " AND ";
+            }
+            //je prend en compte l'insertion de simple quote avec addslashes
+            $sql .= $key . " = '" . addslashes($value) . "'";
+
+            $i++;
+        };
+
+        $entities = array();
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        foreach($results as $result){
+
+            $entity = new User();
+            $entity->setIduser((int)$result['iduser']);
+            $entity->setNom($result['nom']);
+            $entity->setPrenom($result['prenom']);
+            $entity->setStatut($result['statut']);
+            $entity->setPhoto($result['photo']);
+            $entity->setDescription($result['description']);
+            $entity->setLien_cv($result['lien_cv']);
+            $entity->setPseudo($result['pseudo']);
+            $entity->setMdp($result['mdp']);
+            $entity->setCode_postal((int)$result['code_postal']);
+            $entity->setVille($result['ville']);
+            $entity->setAdresse($result['adresse']);
+            $entity->setTel((int)$result['tel']);
+            $entity->setMail($result['mail']);
+
+            array_push($entities,$entity);
+        };
+
+        return $entities;
     }
 
 
