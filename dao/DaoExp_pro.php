@@ -23,11 +23,23 @@ class DaoExp_pro extends DAO
 
     }
 
-
+//fonction qui permet de recuperer une experience pro par rapport a son id
     public function retrieve($id)
     {
 
-        // TODO: Implement retrieve() method.
+        $sql = "SELECT * FROM experience_pro WHERE idexperience_pro =" . $id;
+        $statement = $this->getPdo()->query($sql);
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        $entity = new Experience_pro();
+        $entity->setDate_entrer($result['date_entrer']);
+        $entity->setDate_sortie($result['date_sortie']);
+        $entity->setDescription($result['description']);
+        $entity->setUser_iduser((int)$result['user_iduser']);
+        $entity->setNom_boite($result['nom_boite']);
+        $entity->setIdexperience_pro((int)$result['idexperience_pro']);
+
+        return $entity;
     }
 
     //fonction qui permet de mettre a jour une exp pro
