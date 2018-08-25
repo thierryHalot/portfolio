@@ -23,9 +23,24 @@ class DAODiplomes extends DAO
 
     }
 
+    //fonction qui permet de recuperer un diplome par rapport a son id
     public function retrieve($id)
     {
-        // TODO: Implement retrieve() method.
+        $sql = "SELECT * FROM diplomes WHERE iddiplomes =" . $id;
+        $statement = $this->getPdo()->query($sql);
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        $entity = new Diplome();
+        $entity->setDate_debut((int)$result['date_debut']);
+        $entity->setDate_fin((int)$result['date_fin']);
+        $entity->setNom($result['nom']);
+        $entity->setDescription($result['description']);
+        $entity->setNom_ecole($result['nom_ecole']);
+        $entity->setUser_iduser((int)$result['user_iduser']);
+
+        $entity->setIddiplome((int)$result['iddiplomes']);
+
+        return $entity;
     }
 
     //fonction qui permet de mettre à jour un diplome
