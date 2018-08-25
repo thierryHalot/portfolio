@@ -100,10 +100,52 @@ class DAOProjets extends DAO
         }
         return $entities;
     }
-
+    //fonction qui permet de retrouver un projets
+    //prend en argument un tableau associatif corespondant a l'element que je souhaite rechercher :
+    // la clé coressespondant à la colonne que l'on souhaite recherche
+    // en valeur : la valeur qui nous interresse
+    //retourne un tableau peuplé des entité correspond a ma recherche
     public function getAllBy($filter)
     {
-        // TODO: Implement getAllBy() method.
+        $sql = "SELECT * FROM projets";
+        $i = 0;
+
+        //je boucle dans mon tableau
+        foreach($filter as $key => $value){
+
+//a la premiere iteration  je concataine ma variable $sql avec " WHERE " suivie de la clé /valeur de $filter"
+            if($i===0){
+                $sql .= " WHERE ";
+//a toute les autres itération je rajoute des "AND" suivi des clée/valeur dans le cas d'une recherche plus poussé
+            } else {
+                $sql .= " AND ";
+            }
+            $sql .= $key . " = '" . $value . "'";
+
+            $i++;
+        };
+
+        $entities = array();
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        foreach($results as $result){
+
+            $entity = new Projets();
+            $entity->setNom($result['nom']);
+            $entity->setDescription($result['description']);
+            $entity->setImg($result['img']);
+            $entity->setTechno($result['techno']);
+            $entity->setType($result['type']);
+            $entity->setLien_git($result['lien_git']);
+            $entity->setDate($result['date']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+
+            $entity->setIdprojet((int)$result['idprojets']);
+
+            array_push($entities,$entity);
+        };
+
+        return $entities;
     }
 
 }
