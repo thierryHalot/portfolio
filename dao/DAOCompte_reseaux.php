@@ -22,9 +22,21 @@ class DAOCompte_reseaux extends DAO
 
     }
 
+    //fonction qui recupere un compte reseaux par rapport a son id
     public function retrieve($id)
     {
-        // TODO: Implement retrieve() method.
+        $sql = "SELECT * FROM compte_reseaux WHERE idcompte_reseaux =" . $id;
+        $statement = $this->getPdo()->query($sql);
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        $entity = new Compte_reseaux();
+        $entity->setLien($result['lien']);
+        $entity->setImg($result['img']);
+        $entity->setUser_iduser((int)$result['user_iduser']);
+        $entity->setNom($result['nom']);
+        $entity->setIdcompte_reseaux((int)$result['idcompte_reseaux']);
+
+        return $entity;
     }
 
     //fonction qui permet de mettre à jour un compte reseaux
