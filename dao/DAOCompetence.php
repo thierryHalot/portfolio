@@ -23,9 +23,24 @@ class DAOCompetence extends DAO
 
     }
 
+    //fonction qui permet de recupéré une compétence
+    //prend en argument l'id de la compétence que je souhaite récuperé
+    //retourne une entité peuplé des imformation souhaité
     public function retrieve($id)
     {
-        // TODO: Implement retrieve() method.
+        $sql = "SELECT * FROM competence WHERE idcompetence =" . $id;
+        $statement = $this->getPdo()->query($sql);
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        $entity = new Competence();
+        $entity->setNom($result['nom']);
+        $entity->setLogo($result['logo']);
+        $entity->setUser_iduser((int)$result['user_iduser']);
+        $entity->setProgression((int)$result['progression']);
+        $entity->setIdcompetence((int)$result['idcompetence']);
+        
+        return $entity;
+
     }
 
     //fonction qui permet de mettre a jour une competence
