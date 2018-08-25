@@ -54,9 +54,28 @@ class DAOCompte_reseaux extends DAO
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui recupere tous les comptes reseaux
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+        $sql = "SELECT * FROM compte_reseaux";
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new Compte_reseaux();
+            $entity->setLien($result['lien']);
+            $entity->setImg($result['img']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+            $entity->setNom($result['nom']);
+
+            $entity->setIdcompte_reseaux((int)$result['idcompte_reseaux']);
+
+
+            array_push($entities,$entity);
+        }
+        return $entities;
     }
 
     public function getAllBy($filter)
