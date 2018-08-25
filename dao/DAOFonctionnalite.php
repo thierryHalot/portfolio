@@ -26,7 +26,8 @@ class DAOFonctionnalite extends DAO
 
     }
 
-    //fonction qui permet de récupérer une fonctionalite par raport a son id et qui retourne une entité
+    //fonction qui permet de récupérer une fonctionalite par raport a son id
+    // et qui retourne une entité
     public function retrieve($id)
     {
 
@@ -52,16 +53,33 @@ class DAOFonctionnalite extends DAO
 
     }
 
-    //fonction qui permet de supprimmer une fonctionnalité
+    //fonction qui permet de supprimmer une fonctionalité
     public function delete($id)
     {
         $sql = "DELETE FROM fonctionalite WHERE idfonctionalite = " . $id;
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui permet de récupérer toutes les fonctionnalités et qui retourne un tableau peuplé des entitées récupérer
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+
+        $sql = "SELECT * FROM fonctionalite";
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $entities = array();
+
+        foreach($results as $result){
+            $entity = new Fonctionnalite();
+            $entity->setNom($result['nom']);
+            $entity->setDescription($result['description']);
+            $entity->setIdProjet((int)$result['projets_idprojets']);
+            $entity->setId_fonctionnalite((int)$result['idfonctionalite']);
+
+            array_push($entities,$entity);
+        }
+        return $entities;
+
     }
 
     public function getAllBy($filter)
