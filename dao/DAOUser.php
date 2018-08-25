@@ -109,9 +109,35 @@ class DAOUser extends DAO
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui permet de récupérer la liste de tous les uttilisateurs
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+        $sql = "SELECT * FROM user";
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new User();
+            $entity->setIduser((int)$result['iduser']);
+            $entity->setNom($result['nom']);
+            $entity->setPrenom($result['prenom']);
+            $entity->setStatut($result['statut']);
+            $entity->setPhoto($result['photo']);
+            $entity->setDescription($result['description']);
+            $entity->setLien_cv($result['lien_cv']);
+            $entity->setPseudo($result['pseudo']);
+            $entity->setMdp($result['mdp']);
+            $entity->setCode_postal((int)$result['code_postal']);
+            $entity->setVille($result['ville']);
+            $entity->setAdresse($result['adresse']);
+            $entity->setTel((int)$result['tel']);
+            $entity->setMail($result['mail']);
+
+            array_push($entities,$entity);
+        }
+        return $entities;
     }
 
     public function getAllBy($filter)
