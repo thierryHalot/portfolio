@@ -57,9 +57,27 @@ class DaoExp_pro extends DAO
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui recupere toute les exp pro
     public function getAll()
-    {
-        // TODO: Implement getAll() method.
+    { $sql = "SELECT * FROM experience_pro";
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new Experience_pro();
+            $entity->setDate_entrer($result['date_entrer']);
+            $entity->setDate_sortie($result['date_sortie']);
+            $entity->setDescription($result['description']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+            $entity->setNom_boite($result['nom_boite']);
+            $entity->setIdexperience_pro((int)$result['idexperience_pro']);
+
+
+            array_push($entities,$entity);
+        }
+        return $entities;
     }
 
     public function getAllBy($filter)
