@@ -81,6 +81,7 @@ class DAOFonctionnalite extends DAO
         return $entities;
 
     }
+
     //fonction qui permet de rechercher a élèment
     //prend en argument un tableau associatif corespondant a l'element que je souhaite rechercher :
     // la clé coressespondant à la colonne que l'on souhaite recherche
@@ -106,7 +107,7 @@ class DAOFonctionnalite extends DAO
 
             $i++;
         };
-        
+
         $entities = array();
         $statement = $this->getPdo()->query($sql);
         $results = $statement->fetchAll();
