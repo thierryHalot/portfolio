@@ -72,9 +72,33 @@ class DAOProjets extends DAO
 
     }
 
+    //fonction qui récupère tout les projets de ma table
+    //retourne un tableau peuplé des entité correspondant aux projets récupéré
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+        $sql = "SELECT * FROM projets";
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new Projets();
+            $entity->setNom($result['nom']);
+            $entity->setDescription($result['description']);
+            $entity->setImg($result['img']);
+            $entity->setTechno($result['techno']);
+            $entity->setType($result['type']);
+            $entity->setLien_git($result['lien_git']);
+            $entity->setDate($result['date']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+
+            $entity->setIdprojet((int)$result['idprojets']);
+
+
+            array_push($entities,$entity);
+        }
+        return $entities;
     }
 
     public function getAllBy($filter)
