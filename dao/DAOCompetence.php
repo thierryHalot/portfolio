@@ -38,7 +38,7 @@ class DAOCompetence extends DAO
         $entity->setUser_iduser((int)$result['user_iduser']);
         $entity->setProgression((int)$result['progression']);
         $entity->setIdcompetence((int)$result['idcompetence']);
-        
+
         return $entity;
 
     }
@@ -58,9 +58,27 @@ class DAOCompetence extends DAO
         $this->getPdo()->query($sql);
     }
 
+    //fonction qui récupure toute les competence de ma table
+    //retourn un tableau peuplé des entité correspond aux compétences récupéré
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+        $sql = "SELECT * FROM competence";
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new Competence();
+            $entity->setNom($result['nom']);
+            $entity->setLogo($result['logo']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+            $entity->setProgression((int)$result['progression']);
+            $entity->setIdcompetence((int)$result['idcompetence']);
+
+            array_push($entities,$entity);
+        }
+        return $entities;
     }
 
     public function getAllBy($filter)
