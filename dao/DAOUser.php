@@ -22,7 +22,7 @@ class DAOUser extends DAO
 //fonction qui cree un nouvelle utilisateur
     public function create($entity)
     {
-        $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, coordonne_idcoordonne ) VALUES('" . $entity->getNom() . "','". $entity->getPrenom() . "','" . $entity->getStatut() . "','" . $entity->getPhoto() . "','" . $entity->getDescription() . "','" . $entity->getLien_cv() . "','". $entity->getPseudo() . "','". $entity->getMdp() . "',". $entity->getCoordonne() .")";
+        $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, code_postal,ville,adresse,tel,mail ) VALUES('" . $entity->getNom() . "','". $entity->getPrenom() . "','" . $entity->getStatut() . "','" . $entity->getPhoto() . "','" . $entity->getDescription() . "','" . $entity->getLien_cv() . "','". $entity->getPseudo() . "','". $entity->getMdp() . "',".$entity->getCode_postal().",'".$entity->getVille()."','".$entity->getAdresse()."',".$entity->getTel().", '".$entity->getMail()."')";
 
         $this->getPdo()->query($sql);
 
@@ -46,31 +46,15 @@ class DAOUser extends DAO
         $entity->setLien_cv($result['lien_cv']);
         $entity->setPseudo($result['pseudo']);
         $entity->setMdp($result['mdp']);
-        $entity->setCoordonne((int)$result['coordonne_idcoordonne']);
+        $entity->setCode_postal((int)$result['code_postal']);
+        $entity->setVille($result['ville']);
+        $entity->setAdresse($result['adresse']);
+        $entity->setTel((int)$result['tel']);
+        $entity->setMail($result['mail']);
 
        return $entity;
     }
-//fonction qui recupere mes coordonnés par rapport à mon id
-    public function getCoordonne($id){
 
-        $sql = "SELECT * FROM user INNER JOIN coordonne ON coordonne.idcoordonne = user.iduser  WHERE iduser = ".$id;
-
-        $statement = $this->getPdo()->query($sql);
-
-        $results = $statement->fetchAll();
-foreach ($results as $result){
-            $entity = new Coordonne();
-            $entity->setIdCoordonne($result['idcoordonne']);
-            $entity->setMail($result['mail']);
-            $entity->setAdresse($result['adresse']);
-            $entity->setCode_postal($result['code_postal']);
-            $entity->setTel($result['tel']);
-            $entity->setVille($result['ville']);
-
-    return $entity;
-        }
-
-    }
 //fonction qui recupère tous mes diplomes
     public function getDiplomes($id){
 
@@ -113,7 +97,7 @@ foreach ($results as $result){
     public function update($entity)
     {
 
-        $sql = "UPDATE user SET nom= '".$entity->getNom()."', prenom='".$entity->getPrenom()."', statut='".$entity->getStatut()."', photo='".$entity->getPhoto()."',description='".$entity->getDescription()."', lien_cv='".$entity->getLien_cv()."',pseudo='".$entity->getPseudo()."', mdp='".$entity->getMdp()."', coordonne_idcoordonne=".$entity->getCoordonne()." WHERE iduser = ". $entity->getIduser();
+        $sql = "UPDATE user SET nom= '".$entity->getNom()."', prenom='".$entity->getPrenom()."', statut='".$entity->getStatut()."', photo='".$entity->getPhoto()."',description='".$entity->getDescription()."', lien_cv='".$entity->getLien_cv()."',pseudo='".$entity->getPseudo()."', mdp='".$entity->getMdp()."', code_postal=".$entity->getCode_postal().", ville='".$entity->getVille()."', adresse='".$entity->getAdresse()."', tel=".$entity->getTel().", mail='".$entity->getMail()."' WHERE iduser = ". $entity->getIduser();
         $this->getPdo()->query($sql);
     }
 
