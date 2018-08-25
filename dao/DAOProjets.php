@@ -29,9 +29,28 @@ class DAOProjets extends DAO
 
     }
 
+    //fonction qui permet de recupéré un projet
+    //prend en argument l'id du projet que je souhaite récuperé
+    //retourne une entité peuplé des imformation souhaité
     public function retrieve($id)
     {
-        // TODO: Implement retrieve() method.
+        $sql = "SELECT * FROM projets WHERE idprojets =" . $id;
+        $statement = $this->getPdo()->query($sql);
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        $entity = new Projets();
+        $entity->setNom($result['nom']);
+        $entity->setDescription($result['description']);
+        $entity->setImg($result['img']);
+        $entity->setTechno($result['techno']);
+        $entity->setType($result['type']);
+        $entity->setLien_git($result['lien_git']);
+        $entity->setDate($result['date']);
+        $entity->setUser_iduser((int)$result['user_iduser']);
+
+        $entity->setIdprojet((int)$result['idprojets']);
+
+        return $entity;
     }
 
     //fonction qui permet de mettre un jour un projet
