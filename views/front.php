@@ -212,12 +212,12 @@
         <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
         <div class="media-body align-self-center">
            <p>
-               Nom: <?= $user->getNom() ?><br>
-               Prenom: <?= $user->getPrenom() ?><br>
-               Tel: <?= $coordonne->getTel() ?> <br>
-               Adresse: <?= $coordonne->getAdresse() ?><br>
-               Code postal: <?= $coordonne->getCode_postal() ?><br>
-               Ville: <?= $coordonne->getVille() ?><br>
+              Nom: <?= $user->getNom() ?><br>
+               Prenom:<?= $user->getPrenom() ?><br>
+               Tel: <?= $user->getTel() ?> <br>
+              Adresse:<?= $user->getAdresse() ?><br>
+               Code postal:<?= $user->getCode_postal() ?><br>
+              Ville: <?= $user->getVille() ?><br>
            </p>
         </div>
     </div>
