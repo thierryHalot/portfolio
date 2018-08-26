@@ -1,0 +1,25 @@
+{
+    "name": "beweb/php-mvc.bwb",
+    "authors": [
+        {
+            "name": "Loic DERRIEUX",
+            "email": "l.derrieux@fondespierre.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^5.0"
+        },
+    "require-dev":{
+       "phpunit/phpunit": "^6.5",
+       "guzzlehttp/guzzle":"^6.1"
+    },
+        
+    "autoload": {
+        "psr-4": {
+            "BWB\\Framework\\mvc\\": "core",
+            "BWB\\Framework\\mvc\\models\\":"models",
+            "BWB\\Framework\\mvc\\controllers\\":"controllers",
+            "BWB\\Framework\\mvc\\dao\\":"dao"
+        }
+    }
+}

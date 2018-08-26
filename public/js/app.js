@@ -1,4 +1,3 @@
-alert("coucou");
 getUsers();
 // var xhr = new XMLHttpRequest();
 // alert(xhr.open('GET', 'thierry-halot.fr/api/user'));

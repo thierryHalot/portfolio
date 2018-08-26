@@ -22,9 +22,10 @@ class DAOUser extends DAO
 //fonction qui cree un nouvelle utilisateur
     public function create($entity)
     {
-        $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, coordonne_idcoordonne ) VALUES('" . $entity->getNom() . ',' . $entity->getPrenom() . ',' . $entity->getStatut() . ',' . $entity->getPhoto() . ',' . $entity->getDescription() . ',' . $entity->getLien_cv() . ','. $entity->getPseudo() . ','. $entity->getMdp() . ','. $entity->getCoordonne() . "')";
+        $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, code_postal,ville,adresse,tel,mail ) VALUES('" . $entity->getNom() . "','". $entity->getPrenom() . "','" . $entity->getStatut() . "','" . $entity->getPhoto() . "','" . $entity->getDescription() . "','" . $entity->getLien_cv() . "','". $entity->getPseudo() . "','". $entity->getMdp() . "',".$entity->getCode_postal().",'".$entity->getVille()."','".$entity->getAdresse()."',".$entity->getTel().", '".$entity->getMail()."')";
 
         $this->getPdo()->query($sql);
+
     }
 
     //fonction qui recupere un utilisateur par rapport a son id et renvoi un onject contenant toutes les imformations
@@ -45,31 +46,15 @@ class DAOUser extends DAO
         $entity->setLien_cv($result['lien_cv']);
         $entity->setPseudo($result['pseudo']);
         $entity->setMdp($result['mdp']);
-        $entity->setCoordonne((int)$result['coordonne_idcoordonne']);
+        $entity->setCode_postal((int)$result['code_postal']);
+        $entity->setVille($result['ville']);
+        $entity->setAdresse($result['adresse']);
+        $entity->setTel((int)$result['tel']);
+        $entity->setMail($result['mail']);
 
        return $entity;
     }
-//fonction qui recupere mes coordonnés par rapport à mon id
-    public function getCoordonne($id){
 
-        $sql = "SELECT * FROM user INNER JOIN coordonne ON coordonne.idcoordonne = user.iduser  WHERE iduser = ".$id;
-
-        $statement = $this->getPdo()->query($sql);
-
-        $results = $statement->fetchAll();
-foreach ($results as $result){
-            $entity = new Coordonne();
-            $entity->setIdCoordonne($result['idcoordonne']);
-            $entity->setMail($result['mail']);
-            $entity->setAdresse($result['adresse']);
-            $entity->setCode_postal($result['code_postal']);
-            $entity->setTel($result['tel']);
-            $entity->setVille($result['ville']);
-
-    return $entity;
-        }
-
-    }
 //fonction qui recupère tous mes diplomes
     public function getDiplomes($id){
 
@@ -107,24 +92,104 @@ foreach ($results as $result){
         return $results;
 
     }
-    public function update($array)
+
+    //fonction qui met a jour un utilisateur
+    public function update($entity)
     {
-        // TODO: Implement update() method.
+
+        $sql = "UPDATE user SET nom= '".$entity->getNom()."', prenom='".$entity->getPrenom()."', statut='".$entity->getStatut()."', photo='".$entity->getPhoto()."',description='".$entity->getDescription()."', lien_cv='".$entity->getLien_cv()."',pseudo='".$entity->getPseudo()."', mdp='".$entity->getMdp()."', code_postal=".$entity->getCode_postal().", ville='".$entity->getVille()."', adresse='".$entity->getAdresse()."', tel=".$entity->getTel().", mail='".$entity->getMail()."' WHERE iduser = ". $entity->getIduser();
+        $this->getPdo()->query($sql);
     }
 
+    //fonction qui supprimme un utilisateur
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+
+        $sql = "DELETE FROM user WHERE iduser= " . $id;
+        $this->getPdo()->query($sql);
     }
 
+    //fonction qui permet de récupérer la liste de tous les uttilisateurs
     public function getAll()
     {
-        // TODO: Implement getAll() method.
-    }
+        $sql = "SELECT * FROM user";
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        $entities = array();
 
+        foreach($results as $result){
+
+            $entity = new User();
+            $entity->setIduser((int)$result['iduser']);
+            $entity->setNom($result['nom']);
+            $entity->setPrenom($result['prenom']);
+            $entity->setStatut($result['statut']);
+            $entity->setPhoto($result['photo']);
+            $entity->setDescription($result['description']);
+            $entity->setLien_cv($result['lien_cv']);
+            $entity->setPseudo($result['pseudo']);
+            $entity->setMdp($result['mdp']);
+            $entity->setCode_postal((int)$result['code_postal']);
+            $entity->setVille($result['ville']);
+            $entity->setAdresse($result['adresse']);
+            $entity->setTel((int)$result['tel']);
+            $entity->setMail($result['mail']);
+
+            array_push($entities,$entity);
+        }
+        return $entities;
+    }
+    //fonction qui permet de retrouver un/des uttilisateur(s)
+    //prend en argument un tableau associatif corespondant a l'element que je souhaite rechercher :
+    // la clé coressespondant à la colonne que l'on souhaite recherche
+    // en valeur : la valeur qui nous interresse
+    //retourne un tableau peuplé des entité correspond a ma recherche
     public function getAllBy($filter)
     {
-        // TODO: Implement getAllBy() method.
+        $sql = "SELECT * FROM user";
+        $i = 0;
+
+        //je boucle dans mon tableau
+        foreach($filter as $key => $value){
+
+//a la premiere iteration  je concataine ma variable $sql avec " WHERE " suivie de la clé /valeur de $filter"
+            if($i===0){
+                $sql .= " WHERE ";
+//a toute les autres itération je rajoute des "AND" suivi des clée/valeur dans le cas d'une recherche plus poussé
+            } else {
+                $sql .= " AND ";
+            }
+            //je prend en compte l'insertion de simple quote avec addslashes
+            $sql .= $key . " = '" . addslashes($value) . "'";
+
+            $i++;
+        };
+
+        $entities = array();
+        $statement = $this->getPdo()->query($sql);
+        $results = $statement->fetchAll();
+        foreach($results as $result){
+
+            $entity = new User();
+            $entity->setIduser((int)$result['iduser']);
+            $entity->setNom($result['nom']);
+            $entity->setPrenom($result['prenom']);
+            $entity->setStatut($result['statut']);
+            $entity->setPhoto($result['photo']);
+            $entity->setDescription($result['description']);
+            $entity->setLien_cv($result['lien_cv']);
+            $entity->setPseudo($result['pseudo']);
+            $entity->setMdp($result['mdp']);
+            $entity->setCode_postal((int)$result['code_postal']);
+            $entity->setVille($result['ville']);
+            $entity->setAdresse($result['adresse']);
+            $entity->setTel((int)$result['tel']);
+            $entity->setMail($result['mail']);
+
+            array_push($entities,$entity);
+        };
+
+        return $entities;
     }
 
 

@@ -23,8 +23,6 @@ class ControllerFront extends Controller
         $DaoUser = new DAOUser();
         $user = $DaoUser->retrieve(1);
 
-        $cordonne = $DaoUser->getCoordonne($user->getIduser());
-
         $projets = $DaoUser->getProjets($user->getIduser());
 
         $top = file_get_contents("views/template/top.php");
@@ -34,7 +32,6 @@ class ControllerFront extends Controller
             "top" => $top,
             "bottom"=> $bottom,
             "user"=> $user,
-            "coordonne" => $cordonne,
             "projets" => $projets,
         ));
     }
