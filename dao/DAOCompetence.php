@@ -58,8 +58,8 @@ class DAOCompetence extends DAO
         $this->getPdo()->query($sql);
     }
 
-    //fonction qui récupure toute les competence de ma table
-    //retourn un tableau peuplé des entité correspond aux compétences récupéré
+    //fonction qui récupère toute les competence de ma table
+    //retourne un tableau peuplé des entité correspondant aux compétences récupéré
     public function getAll()
     {
         $sql = "SELECT * FROM competence";
