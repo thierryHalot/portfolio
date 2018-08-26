@@ -16,7 +16,6 @@ class Fonctionnalite
     private $description;
     private $nom;
     private $projets_idprojets;
-    private $projets_iduser;
 
 
     public function getId_fonctionnalite(){
@@ -65,18 +64,6 @@ class Fonctionnalite
 
     }
 
-    public function getIdUser(){
-
-        return $this->projets_iduser;
-
-    }
-
-
-    public function setIdUser($val){
-
-        $this->projets_iduser = $val;
-
-    }
 }
 
 
