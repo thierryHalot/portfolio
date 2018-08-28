@@ -35,12 +35,44 @@ class ControllerBack extends Controller
         $top = file_get_contents("views/template/top.php");
         $bottom = file_get_contents("views/template/bottom.php");
 
-
+        $DaoUser = new DAOUser();
+        $user = $DaoUser->retrieve(1);
 
         $this->render("back", array(
 
             "top"=>$top,
-            "bottom"=>$bottom
+            "bottom"=>$bottom,
+            "user"=>$user
         ));
+    }
+
+    public function updateUser(){
+
+
+
+       $formValue = $this->inputPost();
+
+
+       $daoUser = new DAOUser();
+
+
+       $user = $daoUser->retrieve(1);
+       $user->setNom($formValue["nomUser"]);
+       $user->setLien_cv($formValue["lienCvUser"]);
+       $user->setPrenom($formValue["prenomUser"]);
+       $user->setStatut($formValue["statutUser"]);
+       $user->setPhoto($formValue["photoUser"]);
+       $user->setDescription($formValue["descriptionUser"]);
+       $user->setCode_postal($formValue["codePostalUser"]);
+       $user->setVille($formValue["villeUser"]);
+       $user->setAdresse($formValue["adresseUser"]);
+       $user->setTel($formValue["telUser"]);
+       $user->setMail($formValue["emailUser"]);
+
+       $daoUser->update($user);
+
+
+
+        header("Location: /admin");
     }
 }
