@@ -1,6 +1,7 @@
 {
     "/": "ControllerFront:getView",
     "/admin": "ControllerBack:getView",
+    "/updateUser": "ControllerBack:updateUser",
     "/login": "DefaultController:login",
     "/toto": "ControllerFront:get",
     "/logout": "DefaultController:logout",
