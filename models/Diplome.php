@@ -45,7 +45,7 @@ class Diplome
 
     public function getDate_fin(){
 
-        return $this->date_debut;
+        return $this->date_fin;
     }
 
     public function setDate_fin($val){
