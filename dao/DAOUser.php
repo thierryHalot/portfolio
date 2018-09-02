@@ -10,6 +10,7 @@ namespace BWB\Framework\mvc\dao;
 
 
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Compte_reseaux;
 use BWB\Framework\mvc\models\Coordonne;
 use BWB\Framework\mvc\models\Diplome;
 use BWB\Framework\mvc\models\Experience_pro;
@@ -141,6 +142,34 @@ class DAOUser extends DAO
         return $entities;
 
 
+
+    }
+
+    //fonction qui permet de récupéré tous les compte réseau d'un uttilisateur
+    public function getAllCompte_reseaux($id){
+
+
+        $sql = "SELECT * FROM compte_reseaux WHERE user_iduser =".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new Compte_reseaux();
+            $entity->setLien($result['lien']);
+            $entity->setImg($result['img']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+            $entity->setNom($result['nom']);
+
+            $entity->setIdcompte_reseaux((int)$result['idcompte_reseaux']);
+            array_push($entities,$entity);
+        };
+
+        return $entities;
 
     }
 
