@@ -29,20 +29,37 @@ use BWB\Framework\mvc\models\User;
 
 class ControllerBack extends Controller
 {
+    private $user;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $daoUser = new DAOUser();
+        $user = $daoUser->retrieve(1);
+
+        $this->user = $user;
+    }
+
+
+
+
 
     public function getView(){
 
         $top = file_get_contents("views/template/top.php");
         $bottom = file_get_contents("views/template/bottom.php");
 
-        $DaoUser = new DAOUser();
-        $user = $DaoUser->retrieve(1);
+        $daoUser = new DAOUser();
+        $user = $daoUser->retrieve(1);
+
+        $diplomes = $daoUser->getAllDiplomes($user->getIduser());
 
         $this->render("back", array(
 
             "top"=>$top,
             "bottom"=>$bottom,
-            "user"=>$user
+            "user"=>$user,
+            "diplomes"=>$diplomes
         ));
     }
 
@@ -75,4 +92,60 @@ class ControllerBack extends Controller
 
         header("Location: /admin");
     }
+
+    //fonction qui permet de metre a jour un diplome
+    public function UpdateDiplomes(){
+
+
+        //Je recupere les imformations de mon formulaire
+        $formValue = $this->inputPost();
+
+        //J'instencie un DAODiplomes
+        $daoDiplome = new DAODiplomes();
+
+        //Je recupere l'id du diplomes à mettre a jour
+        $diplome = $daoDiplome->retrieve($formValue["idDiplomeUpdate"]);
+
+$diplome->setNom($formValue["nomDiplomes"]);
+$diplome->setDate_debut($formValue["date_debutDiplome"]);
+$diplome->setDate_fin($formValue["date_finDiplomes"]);
+$diplome->setNom_ecole($formValue["nom_EcoleDiplomes"]);
+$diplome->setDescription($formValue["descriptionDiplomes"]);
+
+//var_dump($diplome);
+        $daoDiplome->update($diplome);
+        header("Location: /admin");
+    }
+
+    //fonction qui permet de crée un diplome
+    public function createDiplome(){
+
+
+        //Je recupere les imformations de mon formulaire
+        $formValue = $this->inputPost();
+
+        //J'instencie un DAODiplomes
+        $daoDiplome = new DAODiplomes();
+
+        $diplome = new Diplome();
+
+        $diplome->setUser_iduser($this->user->getIduser());
+        $diplome->setNom($formValue["nomDiplomesCreate"]);
+        $diplome->setDate_debut($formValue["date_debutDiplomeCreate"]);
+        $diplome->setDate_fin($formValue["date_finDiplomesCreate"]);
+        $diplome->setNom_ecole($formValue["nom_EcoleDiplomesCreate"]);
+        $diplome->setDescription($formValue["descriptionDiplomesCreate"]);
+
+
+        $daoDiplome->create($diplome);
+        header("Location: /admin");
+    }
+
+    public function deleteDiplome(){
+
+        $daodiplome = new DAODiplomes();
+       $formDiplome = $this->inputPost();
+       $daodiplome->delete($formDiplome['supprDiplome']);
+        header("Location: /admin");
+}
 }
