@@ -54,6 +54,7 @@ class ControllerBack extends Controller
 
         $diplomes = $daoUser->getAllDiplomes($user->getIduser());
         $expPros = $daoUser->getExpPro($user->getIduser());
+        $compte_reseaux = $daoUser->getAllCompte_reseaux($user->getIduser());
 
 
         $this->render("back", array(
@@ -62,7 +63,8 @@ class ControllerBack extends Controller
             "bottom"=>$bottom,
             "user"=>$user,
             "diplomes"=>$diplomes,
-            "expPros"=>$expPros
+            "expPros"=>$expPros,
+            "compte_reseaux"=> $compte_reseaux
         ));
     }
 
@@ -207,5 +209,63 @@ public function updateExpPro(){
 $daoExpPro->update($expPro);
 
     header("Location: /admin");
+}
+
+
+//fonction qui supprime un compte réseaux
+
+public function deleteCompte_reseaux(){
+
+
+        $daoCompte_reseaux = new DAOCompte_reseaux();
+
+    $formValue = $this->inputPost();
+
+    $daoCompte_reseaux->delete($formValue["supprCompte_reseaux"]);
+
+
+    header("Location: /admin");
+
+
+}
+
+//fonction qui permet de crée un nouveau compte réseau
+public function createCompte_reseaux(){
+
+    //Je recupere les imformations de mon formulaire
+    $formValue = $this->inputPost();
+
+    $daoCompte_reseaux = new DAOCompte_reseaux();
+
+    $compte_reseau = new Compte_reseaux();
+
+    $compte_reseau->setNom($formValue["NomCompte_reseauCreate"]);
+    $compte_reseau->setImg($formValue["ImgCompte_reseauCreate"]);
+    $compte_reseau->setLien($formValue["LienCompte_reseauCreate"]);
+    $compte_reseau->setUser_iduser($this->user->getIduser());
+
+    $daoCompte_reseaux->create($compte_reseau);
+
+    header("Location: /admin");
+}
+
+//fonction qui met a jour un compte reseau
+public function updateCompte_reseaux(){
+
+    //Je recupere les imformations de mon formulaire
+    $formValue = $this->inputPost();
+
+    $daoCompte_reseaux = new DAOCompte_reseaux();
+
+    $compte_reseau = $daoCompte_reseaux->retrieve($formValue["idCompte_reseauxUpdate"]);
+    $compte_reseau->setNom($formValue["nomCompte_reseauxUpdate"]);
+    $compte_reseau->setImg($formValue["imgCompte_reseauxUpdate"]);
+    $compte_reseau->setLien($formValue["lienCompte_reseauxUpdate"]);
+
+
+    $daoCompte_reseaux->update($compte_reseau);
+
+    header("Location: /admin");
+
 }
 }
