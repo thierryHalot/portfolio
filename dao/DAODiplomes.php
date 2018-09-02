@@ -46,8 +46,9 @@ class DAODiplomes extends DAO
     //fonction qui permet de mettre à jour un diplome
     public function update($entity)
     {
-        $sql = "UPDATE diplomes SET date_debut= ".$entity->getDate_debut().", date_fin =".$entity->getDate_fin().", nom='".$entity->getNom()."', description='".$entity->getDescription()."' nom_ecole='".$entity->getNom_ecole()."' user_iduser=".$entity->getUser_iduser()." WHERE iddiplomes = ". $entity->getIddiplome();
+        $sql = "UPDATE diplomes SET date_debut= ".$entity->getDate_debut().", date_fin =".$entity->getDate_fin().", nom='".$entity->getNom()."', description='".$entity->getDescription()."', nom_ecole='".$entity->getNom_ecole()."', user_iduser=".$entity->getUser_iduser()." WHERE iddiplomes = ". $entity->getIddiplome();
         $this->getPdo()->query($sql);
+
     }
 
     //fonction qui permet de supprimmer un diplomes

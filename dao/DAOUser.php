@@ -11,6 +11,7 @@ namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\Coordonne;
+use BWB\Framework\mvc\models\Diplome;
 use BWB\Framework\mvc\models\User;
 
 class DAOUser extends DAO
@@ -90,6 +91,38 @@ class DAOUser extends DAO
         $results = $statement->fetchAll();
 
         return $results;
+
+    }
+
+    //fonction qui récupère tous les diplomes correspondants a un utilisateur
+    public function getAllDiplomes($id){
+
+        $sql = "SELECT * FROM diplomes WHERE user_iduser =".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new Diplome();
+            $entity->setDate_debut((int)$result['date_debut']);
+            $entity->setDate_fin((int)$result['date_fin']);
+            $entity->setNom($result['nom']);
+            $entity->setDescription($result['description']);
+            $entity->setNom_ecole($result['nom_ecole']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+
+            $entity->setIddiplome((int)$result['iddiplomes']);
+
+            array_push($entities,$entity);
+        };
+
+        return $entities;
+
+
 
     }
 
