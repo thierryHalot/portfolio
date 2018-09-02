@@ -53,13 +53,16 @@ class ControllerBack extends Controller
         $user = $daoUser->retrieve(1);
 
         $diplomes = $daoUser->getAllDiplomes($user->getIduser());
+        $expPros = $daoUser->getExpPro($user->getIduser());
+
 
         $this->render("back", array(
 
             "top"=>$top,
             "bottom"=>$bottom,
             "user"=>$user,
-            "diplomes"=>$diplomes
+            "diplomes"=>$diplomes,
+            "expPros"=>$expPros
         ));
     }
 
@@ -141,11 +144,68 @@ $diplome->setDescription($formValue["descriptionDiplomes"]);
         header("Location: /admin");
     }
 
+    //fonction qui permet de supprimer un diplome
     public function deleteDiplome(){
 
         $daodiplome = new DAODiplomes();
        $formDiplome = $this->inputPost();
        $daodiplome->delete($formDiplome['supprDiplome']);
         header("Location: /admin");
+}
+
+//fonction qui permet de crée une nouvelle experience pro
+public function createExpPro(){
+
+    //Je recupere les imformations de mon formulaire
+    $formValue = $this->inputPost();
+
+    $daoExpPro = new DaoExp_pro();
+
+    $expPro = new Experience_pro();
+
+    $expPro->setNom_boite($formValue["nom_boiteExpProCreate"]);
+    $expPro->setDate_entrer($formValue["date_entrerExpProCreate"]);
+    $expPro->setDate_sortie($formValue["date_sortieExpProCreate"]);
+    $expPro->setDescription($formValue["descriptionExpProCreate"]);
+    $expPro->setUser_iduser($this->user->getIduser());
+
+    $daoExpPro->create($expPro);
+
+    header("Location: /admin");
+}
+
+//fonction qui permet de supprimmer une expérience pro
+public function deleteExpPro(){
+
+    $daoExpPro = new DaoExp_pro();
+
+    $formValue = $this->inputPost();
+
+
+    $daoExpPro->delete($formValue['supprExpPro']);
+
+    header("Location: /admin");
+}
+
+//fonction qui permet de mettre a jour une experience pro
+public function updateExpPro(){
+
+
+    //Je recupere les imformations de mon formulaire
+    $formValue = $this->inputPost();
+
+    $daoExpPro = new DaoExp_pro();
+
+    $expPro = $daoExpPro->retrieve($formValue["idExpProUpdate"]);
+
+
+    $expPro->setNom_boite($formValue["nom_boiteExpPro"]);
+    $expPro->setDate_entrer($formValue["date_entrerExpPro"]);
+    $expPro->setDate_sortie($formValue["date_sortieExpPro"]);
+    $expPro->setDescription($formValue["descriptionExpPro"]);
+
+$daoExpPro->update($expPro);
+
+    header("Location: /admin");
 }
 }
