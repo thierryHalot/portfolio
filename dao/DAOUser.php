@@ -12,6 +12,7 @@ namespace BWB\Framework\mvc\dao;
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\Coordonne;
 use BWB\Framework\mvc\models\Diplome;
+use BWB\Framework\mvc\models\Experience_pro;
 use BWB\Framework\mvc\models\User;
 
 class DAOUser extends DAO
@@ -90,7 +91,24 @@ class DAOUser extends DAO
 
         $results = $statement->fetchAll();
 
-        return $results;
+
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new Experience_pro();
+            $entity->setDate_entrer($result['date_entrer']);
+            $entity->setDate_sortie($result['date_sortie']);
+            $entity->setDescription($result['description']);
+            $entity->setNom_boite($result['nom_boite']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+
+            $entity->setIdexperience_pro((int)$result['idexperience_pro']);
+
+            array_push($entities,$entity);
+        };
+
+        return $entities;
 
     }
 
