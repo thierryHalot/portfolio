@@ -523,4 +523,188 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+    <!-- Crud Compte Reseaux table -->
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>Liste des Comptes Réseaux</h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-primary fas fa-plus-circle float-right" data-toggle="modal" data-target="#createCompte_reseaux"> Compte Réseaux</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <table class="table table-responsive-sm table-hover table-striped">
+
+
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Lien</th>
+                    <th scope="col">Class</th>
+                    <th scope="col"></th>
+                    <th scope="col">edit</th>
+                    <th scope="col">detail</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($compte_reseaux as $compte_reseau): ?>
+                <tr>
+                    <th scope="row"><?= $compte_reseau->getIdcompte_reseaux() ?></th>
+                    <td><?= $compte_reseau->getNom() ?></td>
+                    <td><?= $compte_reseau->getLien() ?></td>
+                    <td><?= $compte_reseau->getImg() ?></td>
+                    <!--Affichage du bouton de suppression -->
+                    <td>
+
+                        <form method="post" action="/deleteCompte_reseaux">
+                            <input type="hidden" name="supprCompte_reseaux" value="<?= $compte_reseau->getIdcompte_reseaux() ?>">
+                            <button type="submit" class="btn btn-danger fas fa-trash-alt" ></button>
+                        </form>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary fas fa-edit" data-toggle="modal" data-target="#updateCompte_reseaux<?=$compte_reseau->getIdcompte_reseaux() ?>"></button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary fas fa-search" data-toggle="modal" data-target="#detailCompte_reseaux<?=$compte_reseau->getIdcompte_reseaux() ?>"></button>
+                    </td>
+                </tr>
+                <!--  formulaire mise à jour compte reseaux -->
+                <div class="modal" id="updateCompte_reseaux<?=$compte_reseau->getIdcompte_reseaux() ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="post" action="/updateCompte_reseaux">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">mise à jour</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body formulaire mise à jour compte reseaux -->
+                                <div class="modal-body">
+                                    <div class="form-group row d-none">
+                                        <label for="idCompte_reseauxUpdate" class="col-sm-4 col-form-label">Id</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" name="idCompte_reseauxUpdate" id="idCompte_reseauxUpdate" value="<?=$compte_reseau->getIdcompte_reseaux() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="nomCompte_reseauxUpdate" class="col-sm-4 col-form-label">Nom</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="nomCompte_reseauxUpdate" id="nomCompte_reseauxUpdate" value="<?=$compte_reseau->getNom() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" >
+                                        <label for="lienCompte_reseauxUpdate" class="col-sm-4 col-form-label">Lien</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="lienCompte_reseauxUpdate" id="lienCompte_reseauxUpdate" value="<?=$compte_reseau->getLien() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="imgCompte_reseauxUpdate" class="col-sm-4 col-form-label">Class</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="imgCompte_reseauxUpdate" id="imgCompte_reseauxUpdate" value="<?=$compte_reseau->getImg() ?>" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary float-right">Mettre à jour</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal d'affichage du détail d'un compte reseaux-->
+                <div class="modal" id="detailCompte_reseaux<?=$compte_reseau->getIdcompte_reseaux() ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Détail Compte réseaux</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body  -->
+                            <div class="modal-body">
+                                <div class="container-fluid">
+
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Nom:</dt>
+                                        <dd class="col-sm-6"><?= $compte_reseau->getNom() ?></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Lien:</dt>
+                                        <dd class="col-sm-6"><?= $compte_reseau->getLien() ?></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Class:</dt>
+                                        <dd class="col-sm-6"><?= $compte_reseau->getImg() ?></dd>
+                                    </dl>
+
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                <tbody>
+            </table>
+        </div>
+    </div>
+    <!--  formulaire Creation Compte reseaux-->
+    <div class="modal" id="createCompte_reseaux">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="/createCompte_reseaux">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nouveau compte réseaux</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="NomCompte_reseauCreate" class="col-sm-4 col-form-label">Nom</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="NomCompte_reseauCreate" id="NomCompte_reseauCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row" >
+                            <label for="LienCompte_reseauCreate" class="col-sm-4 col-form-label">Lien</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="LienCompte_reseauCreate" id="LienCompte_reseauCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="ImgCompte_reseauCreate" class="col-sm-4 col-form-label">Class</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="ImgCompte_reseauCreate" id="ImgCompte_reseauCreate" value="" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary float-right">Crée</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 <?= $bottom ?>
