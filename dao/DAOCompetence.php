@@ -47,7 +47,7 @@ class DAOCompetence extends DAO
     public function update($entity)
     {
 
-        $sql = "UPDATE competence SET nom= '".$entity->getNom()."', user_iduser =".$entity->getUser_idser().", progression=".$entity->getProgression()." WHERE idcompetence = ". $entity->getIdcompetence();
+        $sql = "UPDATE competence SET nom= '".$entity->getNom()."',logo= '".$entity->getLogo()."', user_iduser =".$entity->getUser_idser().", progression=".$entity->getProgression()." WHERE idcompetence = ". $entity->getIdcompetence();
         $this->getPdo()->query($sql);
     }
 
