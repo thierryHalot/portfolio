@@ -55,7 +55,7 @@ class ControllerBack extends Controller
         $diplomes = $daoUser->getAllDiplomes($user->getIduser());
         $expPros = $daoUser->getExpPro($user->getIduser());
         $compte_reseaux = $daoUser->getAllCompte_reseaux($user->getIduser());
-
+        $competences = $daoUser->getAllCompetences($this->user->getIduser());
 
         $this->render("back", array(
 
@@ -64,7 +64,8 @@ class ControllerBack extends Controller
             "user"=>$user,
             "diplomes"=>$diplomes,
             "expPros"=>$expPros,
-            "compte_reseaux"=> $compte_reseaux
+            "compte_reseaux"=> $compte_reseaux,
+            "competences"=>$competences
         ));
     }
 
@@ -267,5 +268,60 @@ public function updateCompte_reseaux(){
 
     header("Location: /admin");
 
+}
+//fonction qui permet de crée une nouvelle compétence
+public function createCompetence(){
+
+
+    //Je recupere les imformations de mon formulaire
+    $formValue = $this->inputPost();
+
+    $daoCompetence = new DAOCompetence();
+
+    $competence = new Competence();
+
+    $competence->setNom($formValue["NomCompetenceCreate"]);
+    $competence->setLogo($formValue["imgCompetenceCreate"]);
+    $competence->setProgression($formValue["progressionCompetenceCreate"]);
+    $competence->setUser_iduser($this->user->getIduser());
+
+    $daoCompetence->create($competence);
+
+    header("Location: /admin");
+
+
+
+}
+
+//fonction qui permet de mettre a jour une competence
+public function updateCompetence(){
+
+    //Je recupere les imformations de mon formulaire
+    $formValue = $this->inputPost();
+
+    $daoCompetence = new DAOCompetence();
+
+    $competence = $daoCompetence->retrieve($formValue["idCompetenceUpdate"]);
+
+    $competence->setNom($formValue["nomCompetenceUpdate"]);
+    $competence->setLogo($formValue["imgCompetenceUpdate"]);
+    $competence->setProgression($formValue["progressionCompetenceUpdate"]);
+
+    $daoCompetence->update($competence);
+
+    header("Location: /admin");
+}
+
+//fonction qui permet de supprimmer une compétence
+public function deleteCompetence(){
+
+    //Je recupere les imformations de mon formulaire
+    $formValue = $this->inputPost();
+
+    $daoCompetence = new DAOCompetence();
+
+    $daoCompetence->delete($formValue["supprCompetence"]);
+
+    header("Location: /admin");
 }
 }
