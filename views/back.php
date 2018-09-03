@@ -707,4 +707,185 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Crud Competence table -->
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>Liste des Compétences</h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-primary fas fa-plus-circle float-right" data-toggle="modal" data-target="#createCompetence"> Compétence</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <table class="table table-responsive-sm table-hover table-striped">
+
+
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Progression</th>
+                    <th scope="col"></th>
+                    <th scope="col">edit</th>
+                    <th scope="col">detail</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($competences as $competence): ?>
+                <tr>
+                    <th scope="row"><?= $competence->getIdcompetence() ?></th>
+                    <td><?= $competence->getNom() ?></td>
+                    <td><?= $competence->getLogo() ?></td>
+                    <td><?= $competence->getProgression() ?></td>
+                    <!--Affichage du bouton de suppression -->
+                    <td>
+
+                        <form method="post" action="/deleteCompetence">
+                            <input type="hidden" name="supprCompetence" value="<?= $competence->getIdcompetence() ?>">
+                            <button type="submit" class="btn btn-danger fas fa-trash-alt" ></button>
+                        </form>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary fas fa-edit" data-toggle="modal" data-target="#updateCompetence<?=$competence->getIdcompetence() ?>"></button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary fas fa-search" data-toggle="modal" data-target="#detailCompetence<?=$competence->getIdcompetence() ?>"></button>
+                    </td>
+                </tr>
+                <!--  formulaire mise à jour competence -->
+                <div class="modal" id="updateCompetence<?=$competence->getIdcompetence() ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="post" action="/updateCompetence">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">mise à jour</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="form-group row d-none">
+                                        <label for="idCompetenceUpdate" class="col-sm-4 col-form-label">Id</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" name="idCompetenceUpdate" id="idCompetenceUpdate" value="<?=$competence->getIdcompetence() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="nomCompetenceUpdate" class="col-sm-4 col-form-label">Nom</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="nomCompetenceUpdate" id="nomCompetenceUpdate" value="<?=$competence->getNom() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" >
+                                        <label for="imgCompetenceUpdate" class="col-sm-4 col-form-label">Class</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="imgCompetenceUpdate" id="imgCompetenceUpdate" value="<?=$competence->getLogo() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="progressionCompetenceUpdate" class="col-sm-4 col-form-label">Progression</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" name="progressionCompetenceUpdate" id="progressionCompetenceUpdate" value="<?=$competence->getProgression() ?>" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary float-right">Mettre à jour</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal d'affichage du détail d'une competence-->
+                <div class="modal" id="detailCompetence<?=$competence->getIdcompetence() ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Détail Competence</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body  -->
+                            <div class="modal-body">
+                                <div class="container-fluid">
+
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Nom:</dt>
+                                        <dd class="col-sm-6"><?= $competence->getNom() ?></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Class:</dt>
+                                        <dd class="col-sm-6"><?= $competence->getLogo() ?></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Progression:</dt>
+                                        <dd class="col-sm-6"><?= $competence->getProgression() ?></dd>
+                                    </dl>
+
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                <tbody>
+            </table>
+        </div>
+    </div>
+    <!--  formulaire Creation Competence-->
+    <div class="modal" id="createCompetence">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="/createCompetence">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nouvelle Conpétence</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="NomCompetenceCreate" class="col-sm-4 col-form-label">Nom</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="NomCompetenceCreate" id="NomCompetenceCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row" >
+                            <label for="imgCompetenceCreate" class="col-sm-4 col-form-label">Class</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="imgCompetenceCreate" id="imgCompetenceCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="progressionCompetenceCreate" class="col-sm-4 col-form-label">Progression</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="progressionCompetenceCreate" id="progressionCompetenceCreate" value="" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary float-right">Crée</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 <?= $bottom ?>
