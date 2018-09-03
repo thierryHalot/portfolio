@@ -10,6 +10,7 @@ namespace BWB\Framework\mvc\dao;
 
 
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Competence;
 use BWB\Framework\mvc\models\Compte_reseaux;
 use BWB\Framework\mvc\models\Coordonne;
 use BWB\Framework\mvc\models\Diplome;
@@ -171,6 +172,30 @@ class DAOUser extends DAO
 
         return $entities;
 
+    }
+
+    //fonction qui permet de récupérer toute les compétences d'un uttilisateur
+    public function getAllCompetences($id){
+
+
+        $sql = "SELECT * FROM competence WHERE user_iduser =".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+        $entities = array();
+        foreach($results as $result){
+
+            $entity = new Competence();
+            $entity->setNom($result['nom']);
+            $entity->setLogo($result['logo']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+            $entity->setProgression((int)$result['progression']);
+            $entity->setIdcompetence((int)$result['idcompetence']);
+
+            array_push($entities,$entity);
+        }
+        return $entities;
     }
 
     //fonction qui met a jour un utilisateur
