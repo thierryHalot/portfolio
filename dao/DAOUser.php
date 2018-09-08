@@ -15,6 +15,7 @@ use BWB\Framework\mvc\models\Compte_reseaux;
 use BWB\Framework\mvc\models\Coordonne;
 use BWB\Framework\mvc\models\Diplome;
 use BWB\Framework\mvc\models\Experience_pro;
+use BWB\Framework\mvc\models\Projets;
 use BWB\Framework\mvc\models\User;
 
 class DAOUser extends DAO
@@ -84,6 +85,38 @@ class DAOUser extends DAO
 
     }
 
+    //fonction qui me permet de récupérer tous les projets d'un utilisateurs par rapport à son id
+    public function getAllProjet($id){
+
+
+        $sql = "SELECT * FROM projets WHERE user_iduser =".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+
+        $entities = array();
+
+        foreach($results as $result){
+
+            $entity = new Projets();
+            $entity->setNom($result['nom']);
+            $entity->setDescription($result['description']);
+            $entity->setImg($result['img']);
+            $entity->setTechno($result['techno']);
+            $entity->setType($result['type']);
+            $entity->setLien_git($result['lien_git']);
+            $entity->setDate($result['date']);
+            $entity->setUser_iduser((int)$result['user_iduser']);
+            $entity->setIdprojet((int)$result['idprojets']);
+
+
+            array_push($entities,$entity);
+        }
+        return $entities;
+
+
+    }
     //fonction qui recupere toute mes expériences professionels
     public function getExpPro($id){
 
