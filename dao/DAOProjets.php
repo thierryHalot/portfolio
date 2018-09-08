@@ -10,6 +10,7 @@ namespace BWB\Framework\mvc\dao;
 
 
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Fonctionnalite;
 use BWB\Framework\mvc\models\Projets;
 
 class DAOProjets extends DAO
@@ -53,6 +54,31 @@ class DAOProjets extends DAO
         return $entity;
     }
 
+    //fonction qui recupere toutes le fonctionnalite d'un projet par rapport a son id
+    public function getALLFonctionnalite($id){
+
+
+        $sql = "SELECT * FROM fonctionalite WHERE projets_idprojets =".$id;
+
+        $statement = $this->getPdo()->query($sql);
+
+        $results = $statement->fetchAll();
+
+        $entities = array();
+
+        foreach($results as $result){
+            $entity = new Fonctionnalite();
+            $entity->setNom($result['nom']);
+            $entity->setDescription($result['description']);
+            $entity->setIdProjet((int)$result['projets_idprojets']);
+            $entity->setId_fonctionnalite((int)$result['idfonctionalite']);
+
+            array_push($entities,$entity);
+        }
+
+        return $entities;
+
+    }
     //fonction qui permet de mettre un jour un projet
     public function update($entity)
     {
