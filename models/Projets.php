@@ -9,6 +9,8 @@
 namespace BWB\Framework\mvc\models;
 
 
+use BWB\Framework\mvc\dao\DAOProjets;
+
 class Projets
 {
     /* propriété*/
@@ -23,7 +25,22 @@ class Projets
     private $date;
     private $user_iduser;
 
+    private $fonctionalites;
+
     /* getter et setter*/
+
+    public function getFonctionalites(){
+
+        return $this->fonctionalites;
+
+    }
+
+    public function setFonctionnalite($val){
+
+        $this->fonctionalites= $val;
+
+    }
+
 
     public function getDate(){
 

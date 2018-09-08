@@ -57,6 +57,17 @@ class ControllerBack extends Controller
         $compte_reseaux = $daoUser->getAllCompte_reseaux($user->getIduser());
         $competences = $daoUser->getAllCompetences($this->user->getIduser());
 
+        $daoProjet = new DAOProjets();
+        $projets = $daoUser->getAllProjet($this->user->getIduser());
+
+
+        foreach ($projets as $projet){
+
+
+            $projet->setFonctionnalite($daoProjet->getALLFonctionnalite($projet->getIdprojet()));
+
+        }
+
         $this->render("back", array(
 
             "top"=>$top,
@@ -65,7 +76,8 @@ class ControllerBack extends Controller
             "diplomes"=>$diplomes,
             "expPros"=>$expPros,
             "compte_reseaux"=> $compte_reseaux,
-            "competences"=>$competences
+            "competences"=>$competences,
+            "projets"=>$projets
         ));
     }
 
