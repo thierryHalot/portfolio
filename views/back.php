@@ -353,8 +353,181 @@
             </div>
         </div>
     </div>
+<div class="container back">
+<h2>Listes des fonctionnalitées :</h2>
+    <!-- Crud fonctionalité -->
+<?php foreach ($projets as $projet): ?>
+    <div class="back">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>Projet : <?= $projet->getNom() ?></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-primary fas fa-plus-circle float-right" data-toggle="modal" data-target="#createFonct<?=$projet->getIdprojet() ?>"> Fonctionnalité</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <?php if (!empty($projet->getFonctionalites())):?>
+            <table class="table table-responsive-sm table-hover table-striped">
 
 
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">nom</th>
+                    <th scope="col"></th>
+                    <th scope="col">edit</th>
+                    <th scope="col">detail</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($projet->getFonctionalites() as $fonct):?>
+
+
+                <tr>
+                    <th scope="row"><?= $fonct->getId_fonctionnalite() ?></th>
+                    <td><?= $fonct->getNom() ?></td>
+                    <!--Affichage du bouton de suppression -->
+                    <td>
+
+                        <form method="post" action="/deleteFonct" >
+                            <input type="hidden" name="supprFonct" value="<?= $fonct->getId_fonctionnalite() ?>">
+                            <button type="submit" class="btn btn-danger fas fa-trash-alt" ></button>
+                        </form>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary fas fa-edit" data-toggle="modal" data-target="#updateFonct<?=$fonct->getId_fonctionnalite() ?>"></button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary fas fa-search" data-toggle="modal" data-target="#detailFonct<?=$fonct->getId_fonctionnalite() ?>"></button>
+                    </td>
+                </tr>
+                <!--  formulaire mise à jour d'une fonctionnalité d'un  Projet-->
+                <div class="modal" id="updateFonct<?=$fonct->getId_fonctionnalite() ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="updateFonct" method="post" action="/updateFonct">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">mise à jour d'une Fonctionnalité</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body formulaire d'une fonctionnalité d'un projet -->
+                                <div class="modal-body">
+                                    <div class="form-group row d-none">
+                                        <label for="idFonctUpdate" class="col-sm-4 col-form-label">Id</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" name="idFonctUpdate" id="idFonctUpdate" value="<?=$fonct->getId_fonctionnalite() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="nomFonctUpdate" class="col-sm-4 col-form-label">Nom</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="nomFonctUpdate" id="nomFonctUpdate" value="<?=$fonct->getNom(); ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descriptionFonctUpdate">description:</label>
+                                        <textarea class="form-control" rows="5" name="descriptionFonctUpdate" id="descriptionFonctUpdate" required ><?=$fonct->getDescription(); ?></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary float-right">Mettre à jour</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal d'affichage du détail d'une fonctionnalité d'un Projet-->
+                <div class="modal" id="detailFonct<?=$fonct->getId_fonctionnalite() ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Détail de la fonctionnalité</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body formulaire détail d'une fonctionnalité d'un Projet -->
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Nom:</dt>
+                                        <dd class="col-sm-6"><?= $fonct->getNom() ?></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Description: </dt>
+                                        <dd style="word-wrap: break-word;">
+                                            <?= $fonct->getDescription() ?>
+                                        </dd>
+
+
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                <tbody>
+            </table>
+            <?php else:?>
+
+            <p>Aucune Fonctionalité pour ce projet </p>
+    <?php endif; ?>
+
+        </div>
+    </div>
+
+    <!--  formulaire Creation d'une fonctionnalité correspondant a un projet-->
+    <div class="modal" id="createFonct<?=$projet->getIdprojet() ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="createfonctform<?=$projet->getIdprojet() ?>" method="post" action="/createFonct">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nouvelle Fonctionnaliter</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="form-group row d-none">
+                            <label for="idProjetCreateFonct" class="col-sm-4 col-form-label">Id</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="idProjetCreateFonct" id="idProjetCreateFonct" value="<?=$projet->getIdprojet() ?>" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nomFonctCreate" class="col-sm-4 col-form-label">Nom</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="nomFonctCreate" id="nomFonctCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descriptionFonctCreate">description:</label>
+                            <textarea class="form-control" rows="5" name="descriptionFonctCreate" id="descriptionFonctCreate" required ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary float-right">Crée</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
+</div>
 <!-- Crud diplome table -->
     <div class="container back">
     <div class="table-wrapper">

@@ -360,8 +360,52 @@ public function updateProjet(){
 
 }
 
+//méthode qui permet de crée une nouvelle fonctionnalité correspondant a un projet
+
+public function createFonct(){
+
+    $formValue = $this->inputPost();
+    $daoFonct = new DAOFonctionnalite();
+    $fonct = new Fonctionnalite();
+
+    $fonct->setNom($formValue["nomFonctCreate"]);
+    $fonct->setDescription($formValue["descriptionFonctCreate"]);
+    $fonct->setIdProjet($formValue["idProjetCreateFonct"]);
+
+    $daoFonct->create($fonct);
+    header("Location: /admin");
+
+}
+//méthode qui permet de supprimmer une fonctionnalité d'un projet
+public function deleteFonct(){
+
+    $formValue = $this->inputPost();
+
+    $daoFonct = new DAOFonctionnalite();
+
+    $daoFonct->delete($formValue["supprFonct"]);
+
+    header("Location: /admin");
+
+}
+
+//méthode qui permet de mettre a jour une fonctionnalité d'un projet
+public function updateFonct(){
+
+    $formValue = $this->inputPost();
+    $daoFonct = new DAOFonctionnalite();
+    $fonct = $daoFonct->retrieve($formValue["idFonctUpdate"]);
+    $fonct->setNom($formValue["nomFonctUpdate"]);
+    $fonct->setDescription($formValue["descriptionFonctUpdate"]);
+
+    $daoFonct->update($fonct);
+
+    header("Location: /admin");
 
 
+
+
+}
 
 //fonction qui supprime un compte réseaux
 
