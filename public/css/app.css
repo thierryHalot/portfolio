@@ -1,5 +1,97 @@
-.contenue{
 
-    margin-top: 100px;
 
+/*j'adapte la hauteur de mes div a tous les ecran qui ont une résolution comprise entre:*/
+
+
+/*Pour une largeur conprise entre 200px et 640px*/
+@media screen and (min-width: 200px) and (max-width: 640px) {
+
+    /*J'affecte une taille minimum de 480px*/
+    /*j'espace un petit peu mon contenus avec un margin top*/
+    .contenue {
+
+
+        min-height: 480px;
+        margin-top: 5px;
+    }
+
+    /*je modifie la taille de mes titres pour les petits écrans*/
+    h1{
+        font-size: 30px;
+    }
+/*j'abaisse mon footer de 50px pour eviter qu'il soit coller à ma div du dessus*/
+    .monFooter{
+
+        margin-top: 50px;
+
+    }
+/*je fais en sorte que m'a barre de nav ne chevauche pas mon contenu*/
+    .accueil{
+
+        margin-top: 65px;
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 720px) {
+    .contenue {
+
+
+        min-height:576px;
+    }
+
+    .monFooter{
+
+        margin-top: 100px;
+
+    }
+
+    .accueil{
+
+        margin-top: 60px;
+    }
+}
+
+
+@media screen and (min-width: 720px) and (max-width: 1024px) {
+    .contenue {
+
+
+        min-height:768px;
+
+    }
+
+    .monFooter{
+
+        margin-top: 100px;
+
+    }
+
+    .accueil{
+
+        margin-top: 60px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1920px) {
+    .contenue {
+
+
+        min-height: 768px;
+    }
+
+    .monFooter{
+
+        margin-top: 100px;
+
+    }
+
+    .accueil{
+
+        margin-top: 60px;
+    }
+}
+
+.back{
+
+    margin-bottom: 4%;
 }

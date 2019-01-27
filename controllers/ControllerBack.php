@@ -67,7 +67,7 @@ class ControllerBack extends Controller
             $projet->setFonctionnalite($daoProjet->getALLFonctionnalite($projet->getIdprojet()));
 
         }
-
+        //var_dump($projet);
         $this->render("back", array(
 
             "top"=>$top,
@@ -224,6 +224,144 @@ $daoExpPro->update($expPro);
     header("Location: /admin");
 }
 
+//méthode qui permet de crée un nouveaux projet
+public function createProjet(){
+
+    $projet = new Projets();
+    //je peuple mon entité avec les imformation du formulaire
+    $formValue = $this->inputPost();
+
+    $projet->setNom($formValue["nomProjetCreate"]);
+    $projet->setDescription($formValue["descriptionProjetCreate"]);
+    $projet->setTechno($formValue["technoProjetCreate"]);
+    $projet->setType($formValue["typeProjetCreate"]);
+    $projet->setLien_git($formValue["lienGitProjetCreate"]);
+    $projet->setDate($formValue["dateProjetCreate"]);
+    $projet->setUser_iduser($this->user->getIduser());
+
+    $daoProjet = new DAOProjets();
+
+    //si je récupère bien mon fichier dans ma superGlobale
+    if(isset($_FILES['imgProjetCreate']))
+    {
+        //nom du dossier ou je déplace l'image
+        $dossier = 'public/imgProjets/';
+
+
+       //je récupère l'extension
+        $extension = strrchr($_FILES['imgProjetCreate']['name'], '.');
+
+        //je définie le nom du fichier
+        $fichier = uniqid().$extension;
+        //Si la fonction renvoie TRUE, c'est que ça a fonctionné,
+        // l'image a été déplacer dans le dossier avec le nom du fichier spécifier
+        if(move_uploaded_file($_FILES['imgProjetCreate']['tmp_name'], $dossier . $fichier))
+        {
+            //je persiste directement le chemin vers mon image, puis mon projet
+            $projet->setImg('http://'.$_SERVER['SERVER_NAME'].'/'.$dossier.$fichier);
+            $daoProjet->create($projet);
+
+            //je redirigige l'utilisateur
+            header("Location: /admin");
+
+
+        }
+        else //Sinon (la fonction renvoie FALSE), j'affiche un message d'erreur.
+        {
+            echo 'Echec de l\'upload !';
+        }
+    }
+}
+
+//méthode qui permet la suppression d'un projet
+public function deleteProjet(){
+
+        $daoProjet = new DAOProjets();
+
+        //je récupère mon projet graçe a son id
+        $formValue = $this->inputPost();
+        $projet = $daoProjet->retrieve($formValue["supprProjet"]);
+
+        $daoFonctionalite = new DAOFonctionnalite();
+
+        //je tente de récupéré les fonctionnalitées qui lui sont associé
+        $fonctionalites =$daoFonctionalite->getAllBy(['projets_idprojets' =>$projet->getIdprojet()]);
+
+        //si mon projet possède des fonctionnalitées, je les supprime une a une
+        if(!empty($fonctionalites)) {
+            foreach ($fonctionalites as $fonctionalite) {
+
+                $daoFonctionalite->delete($fonctionalite->getId_fonctionnalite());
+
+            }
+        }
+        //je supprime le projet
+        $daoProjet->delete($projet->getIdprojet());
+
+        //je redirige l'utilisateur
+        header("Location: /admin");
+
+
+}
+
+
+public function updateProjet(){
+
+    $formValue = $this->inputPost();
+
+    $daoProjet = new DAOProjets();
+
+    $projet = $daoProjet->retrieve($formValue['idProjetUpdate']);
+
+    $projet->setNom($formValue["nomProjetUpdate"]);
+    $projet->setDescription($formValue["descriptionProjetUpdate"]);
+    $projet->setTechno($formValue["technoProjetUpdate"]);
+    $projet->setType($formValue["typeProjetUpdate"]);
+    $projet->setLien_git($formValue["lien_gitProjetUpdate"]);
+    $projet->setDate($formValue["dateProjetUpdate"]);
+    $projet->setUser_iduser($this->user->getIduser());
+
+
+    //si je récupère bien mon fichier dans ma superGlobale
+    if(isset($_FILES['imgProjetUpdate']))
+    {
+        //nom du dossier ou je déplace l'image
+        $dossier = 'public/imgProjets/';
+
+
+        //je récupère l'extension
+        $extension = strrchr($_FILES['imgProjetUpdate']['name'], '.');
+
+        //je définie le nom du fichier
+        $fichier = uniqid().$extension;
+        //Si la fonction renvoie TRUE, c'est que ça a fonctionné,
+        // l'image a été déplacer dans le dossier avec le nom du fichier spécifier
+        if(move_uploaded_file($_FILES['imgProjetUpdate']['tmp_name'], $dossier . $fichier))
+        {
+            //je persiste directement le chemin vers mon image, puis mon projet
+            $projet->setImg('http://'.$_SERVER['SERVER_NAME'].'/'.$dossier.$fichier);
+
+
+            //je redirigige l'utilisateur
+
+
+
+        }
+        else //Sinon (la fonction renvoie FALSE), j'affiche un message d'erreur.
+        {
+            echo 'Echec de l\'upload !';
+        }
+    }
+    //var_dump($projet);
+    $daoProjet->update($projet);
+    header("Location: /admin");
+
+
+
+}
+
+
+
 
 //fonction qui supprime un compte réseaux
 
@@ -232,12 +370,12 @@ public function deleteCompte_reseaux(){
 
         $daoCompte_reseaux = new DAOCompte_reseaux();
 
-    $formValue = $this->inputPost();
+        $formValue = $this->inputPost();
 
-    $daoCompte_reseaux->delete($formValue["supprCompte_reseaux"]);
+        $daoCompte_reseaux->delete($formValue["supprCompte_reseaux"]);
 
 
-    header("Location: /admin");
+        header("Location: /admin");
 
 
 }

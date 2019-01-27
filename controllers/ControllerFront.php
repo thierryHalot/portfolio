@@ -23,7 +23,8 @@ class ControllerFront extends Controller
         $DaoUser = new DAOUser();
         $user = $DaoUser->retrieve(1);
 
-        $projets = $DaoUser->getProjets($user->getIduser());
+
+        $projets = $DaoUser->getAllProjet($user->getIduser());
 
         $top = file_get_contents("views/template/top.php");
         $bottom = file_get_contents("views/template/bottom.php");
@@ -37,7 +38,8 @@ class ControllerFront extends Controller
     }
 
     public function get(){
-
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
 //recuperation des données me corespondant;
         $DaoUser = new DAOUser();
         $user = $DaoUser->retrieve(1);
@@ -47,7 +49,7 @@ class ControllerFront extends Controller
         $test = $this->inputGet();
 
         $test['user'] = $data;
-        header('Content-Type: application/json');
+
         echo $data;
 
 

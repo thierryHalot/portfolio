@@ -7,11 +7,12 @@ getUsers();
  function getUsers() {
      $.ajax({
          type: "GET",
-         url: "http://thierry-halot.bwb/api/user",
+         url: "https://zestedesavoir.com/api/membres/",
 
         dataType: 'json',
          success: function (data) {
-             console.log(data);
+
+alert("oui");
              },
 
          error:function(data) {
@@ -21,10 +22,10 @@ getUsers();
      })
  }
 
-$(function() {
-    // Sections height
-    $(window).resize(function() {
-        var sH = $(window).height();
-        $('.contenue').css('height', sH + 'px');
-    });
-});
+// $(function() {
+//     // Sections height
+//     $(window).resize(function() {
+//         var sH = $(window).height();
+//         $('.contenue').css('height', sH + 'px');
+//     });
+// });

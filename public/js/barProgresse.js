@@ -28,7 +28,8 @@ function framePerso(progress, id, time) {
 //je stocke la hauteur de ma fenetre
 var height = $(window).height();
 
-//si l'utilisateur descend en dessous des 100 px , j'affiche l'animation de mes bar de progression
+//si l'utilisateur descend en dessous des 100 px ,
+// j'affiche l'animation de mes bars de progression
 if (height > 200) {
 
     framePerso(90,"skillHtml",50);

@@ -25,7 +25,7 @@ class DAOProjets extends DAO
     {
 
 
-        $sql = "INSERT INTO projets (nom,description,img,techno,type,lien_git,user_iduser,date) VALUES('".$entity->getNom()."','".$entity->getDescription()."','".$entity->getImg()."','".$entity->getTechno()."','".$entity->getType()."','".$entity->getLien_git()."',".$entity->getUser_iduser().",'".$entity->getDate()."')";
+        $sql = "INSERT INTO projets (nom,description,img,techno,type,lien_git,user_iduser,date) VALUES('".$entity->getNom()."','".addslashes($entity->getDescription())."','".$entity->getImg()."','".$entity->getTechno()."','".$entity->getType()."','".$entity->getLien_git()."',".$entity->getUser_iduser().",'".$entity->getDate()."')";
         $this->getPdo()->query($sql);
 
     }
@@ -83,7 +83,7 @@ class DAOProjets extends DAO
     public function update($entity)
     {
 
-       $sql = "UPDATE projets SET nom= '".$entity->getNom()."', description='".$entity->getDescription()."', img='".$entity->getImg()."', techno='".$entity->getTechno()."',type='".$entity->getType()."', lien_git='".$entity->getLien_git()."',user_iduser=".$entity->getUser_iduser().", date='".$entity->getDate()."' WHERE idprojets = ". $entity->getIdprojet();
+       $sql = "UPDATE projets SET nom= '".$entity->getNom()."', description='".addslashes($entity->getDescription())."', img='".$entity->getImg()."', techno='".$entity->getTechno()."',type='".$entity->getType()."', lien_git='".$entity->getLien_git()."',user_iduser=".$entity->getUser_iduser().", date='".$entity->getDate()."' WHERE idprojets = ". $entity->getIdprojet();
         $this->getPdo()->query($sql);
 
     }

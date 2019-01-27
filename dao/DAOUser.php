@@ -235,7 +235,27 @@ class DAOUser extends DAO
     public function update($entity)
     {
 
-        $sql = "UPDATE user SET nom= '".$entity->getNom()."', prenom='".$entity->getPrenom()."', statut='".$entity->getStatut()."', photo='".$entity->getPhoto()."',description='".$entity->getDescription()."', lien_cv='".$entity->getLien_cv()."',pseudo='".$entity->getPseudo()."', mdp='".$entity->getMdp()."', code_postal=".$entity->getCode_postal().", ville='".$entity->getVille()."', adresse='".$entity->getAdresse()."', tel=".$entity->getTel().", mail='".$entity->getMail()."' WHERE iduser = ". $entity->getIduser();
+        $sql = "UPDATE user SET nom= '"
+            .$entity->getNom()
+            ."', prenom='".$entity->getPrenom()
+            ."', statut='".$entity->getStatut()
+            ."', photo='".$entity->getPhoto()
+            ."',description='"
+            .$entity->getDescription()
+            ."', lien_cv='".$entity->getLien_cv()
+            ."',pseudo='".$entity->getPseudo()
+            ."', mdp='".$entity->getMdp()
+            ."', code_postal="
+            .$entity->getCode_postal()
+            .", ville='".$entity->getVille()
+            ."', adresse='"
+            .$entity->getAdresse()
+            ."', tel=".$entity->getTel()
+            .", mail='"
+            .$entity->getMail()
+            ."' WHERE iduser = ". $entity->getIduser();
+
+        //je me connecte à ma bdd et j'execute ma requète
         $this->getPdo()->query($sql);
     }
 

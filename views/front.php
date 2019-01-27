@@ -24,7 +24,7 @@
 </nav>
 
 <!-- Nouvelle page Acueil-->
-<div class="container contenue" id="accueil">
+<div class="container contenue accueil" id="accueil">
     <div class="media ">
         <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
         <div class="media-body align-self-center">
@@ -117,8 +117,8 @@
         <div class="col-md-4">
 
             <div class="card">
-                <h1 class="card-title text-center"><?= $projet['nom'] ?></h1>
-                <img class="card-img img-responsive" src="public/img/photo.jpg" alt="photoAccueil" />
+                <h1 class="card-title text-center"><?= $projet->getNom() ?></h1>
+                <img class="card-img img-responsive" src="<?= $projet->getImg()?>" alt="photoProjet<?= $projet->getNom()?>" />
                 <div class="card-body">
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">
                     plus d'info !
@@ -130,17 +130,36 @@
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title"><?= $projet['nom'] ?></h4>
+                                <h4 class="modal-title"><?= $projet->getNom() ?></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                               <h6>date:  </h6>
-                                <h6>Type: <?= $projet['type'] ?> </h6>
-                                <h6>Techno utilisé: <?= $projet['techno'] ?> </h6>
-                                <h6>fonctionnalité: </h6>
-                                <p>description:</p>
+                                <dl class="row">
+                                    <dt class="col-sm-6">Nom:</dt>
+                                    <dd class="col-sm-6"><?= $projet->getNom() ?></dd>
+                                </dl>
+                                <dl class="row">
+                                    <dt class="col-sm-6">Type:</dt>
+                                    <dd class="col-sm-6"><?= $projet->getType() ?></dd>
+                                </dl>
+                                <dl class="row">
+                                    <dt class="col-sm-6">lien-Git:</dt>
+                                    <dd class="col-sm-6"><?= $projet->getLien_git() ?></dd>
+                                </dl>
+                                <dl class="row">
+                                    <dt class="col-sm-6">Date:</dt>
+                                    <dd class="col-sm-6"><?= $projet->getDate() ?></dd>
+                                </dl>
+                                <dl>
+                                    <dt>Description: </dt>
+                                    <dd style="word-wrap: break-word;">
+                                        <?= $projet->getDescription() ?>
+                                    </dd>
+
+
+                                </dl>
                             </div>
 
                             <!-- Modal footer -->
@@ -254,7 +273,7 @@
     </form>
 </div>
 <footer>
-<div class="container contenue">
+<div class="container monFooter">
     <div class="text-center center-block">
         <a href="https://www.facebook.com/thierry.halot.39"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
         <a href="https://twitter.com/HalotThierry"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>

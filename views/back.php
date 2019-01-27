@@ -1,83 +1,83 @@
 <?= $top ?>
 
-<!--<!-- formulaire Update User -->
-<!--    <div class="container contenue" >-->
-<!--        <br>-->
-<!--        <form id="updateUser" method="post" action="/updateUser">-->
-<!--            <h6>Mettre à jour mes imformations :</h6>-->
-<!--            <br>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="villeUser" class="col-sm-2 col-form-label">Lien CV</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="text" class="form-control" name="lienCvUser" id="lienCvUser" value="--><?//=$user->getLien_cv(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row" >-->
-<!--                <label for="nomUser" class="col-sm-2 col-form-label">Nom</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="text" class="form-control" name="nomUser" id="nomUser" value="--><?//=$user->getNom(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="prenomUser" class="col-sm-2 col-form-label">Prenom</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="text" class="form-control" name="prenomUser" id="prenomUser" value="--><?//=$user->getPrenom(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="statutUser" class="col-sm-2 col-form-label">Statut</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="text" class="form-control" name="statutUser" id="statutUser" value="--><?//=$user->getStatut(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="emailUser" class="col-sm-2 col-form-label">Email</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="email" class="form-control" name="emailUser" id="emailUser" value="--><?//=$user->getMail(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="photoUser" class="col-sm-2 col-form-label">Photo</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="text" class="form-control" name="photoUser" id="photoUser" value="--><?//=$user->getPhoto(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="codePostalUser" class="col-sm-2 col-form-label">Code-Postal</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="number" class="form-control"  name="codePostalUser" id="codePostalUser" value="--><?//=$user->getCode_postal(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="villeUser" class="col-sm-2 col-form-label">Ville</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="text" class="form-control" name="villeUser" id="villeUser" value="--><?//=$user->getVille(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="adresseUser" class="col-sm-2 col-form-label">Adresse</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="text" class="form-control" name="adresseUser" id="adresseUser" value="--><?//=$user->getAdresse(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group row">-->
-<!--                <label for="telUser" class="col-sm-2 col-form-label">tel</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                    <input type="tel" class="form-control" name="telUser" id="telUser" value="--><?//=$user->getTel(); ?><!--" required>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="descriptionUser">description:</label>-->
-<!--                <textarea class="form-control" rows="5" name="descriptionUser" id="descriptionUser" required >--><?//=$user->getDescription(); ?><!-- </textarea>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <button type="submit" class="btn btn-primary float-right">Mettre à jour</button>-->
-<!--                <br>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--<!-- fin formulaire Update User -->-->
-<!---->
+<!-- formulaire Update User -->
+    <div class="container contenue back" >
+        <br>
+        <form id="updateUser" method="post" action="/updateUser">
+            <h6>Mettre à jour mes imformations :</h6>
+            <br>
+            <div class="form-group row">
+                <label for="villeUser" class="col-sm-2 col-form-label">Lien CV</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="lienCvUser" id="lienCvUser" value="<?=$user->getLien_cv(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row" >
+                <label for="nomUser" class="col-sm-2 col-form-label">Nom</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="nomUser" id="nomUser" value="<?=$user->getNom(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="prenomUser" class="col-sm-2 col-form-label">Prenom</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="prenomUser" id="prenomUser" value="<?=$user->getPrenom(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="statutUser" class="col-sm-2 col-form-label">Statut</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="statutUser" id="statutUser" value="<?=$user->getStatut(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="emailUser" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="emailUser" id="emailUser" value="<?=$user->getMail(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="photoUser" class="col-sm-2 col-form-label">Photo</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="photoUser" id="photoUser" value="<?=$user->getPhoto(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="codePostalUser" class="col-sm-2 col-form-label">Code-Postal</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control"  name="codePostalUser" id="codePostalUser" value="<?=$user->getCode_postal(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="villeUser" class="col-sm-2 col-form-label">Ville</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="villeUser" id="villeUser" value="<?=$user->getVille(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="adresseUser" class="col-sm-2 col-form-label">Adresse</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="adresseUser" id="adresseUser" value="<?=$user->getAdresse(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="telUser" class="col-sm-2 col-form-label">tel</label>
+                <div class="col-sm-10">
+                    <input type="tel" class="form-control" name="telUser" id="telUser" value="<?=$user->getTel(); ?>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="descriptionUser">description:</label>
+                <textarea class="form-control" rows="5" name="descriptionUser" id="descriptionUser" required ><?=$user->getDescription(); ?> </textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary float-right">Mettre à jour</button>
+                <br>
+            </div>
+        </form>
+    </div>
+<!-- fin formulaire Update User -->
+
 <!--    <div class="container contenue" >-->
 <!--        <br>-->
 <!--        <form id="updateDiplomes" method="post" action="/updateDiplomes">-->
@@ -117,9 +117,246 @@
 <!--            </div>-->
 <!--        </form>-->
 <!--    </div>-->
+<!-- Crud projet -->
+    <div class="container back">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>Liste des Projets</h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-primary fas fa-plus-circle float-right" data-toggle="modal" data-target="#createProjet"> Projet</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <table class="table table-responsive-sm table-hover table-striped">
+
+
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">nom</th>
+                    <th scope="col">date</th>
+                    <th scope="col">type</th>
+                    <th scope="col"></th>
+                    <th scope="col">edit</th>
+                    <th scope="col">detail</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($projets as $projet): ?>
+                <tr>
+                    <th scope="row"><?= $projet->getIdprojet() ?></th>
+                    <td><?= $projet->getNom() ?></td>
+                    <td><?= $projet->getDate() ?></td>
+                    <td><?= $projet->gettype() ?></td>
+                    <!--Affichage du bouton de suppression -->
+                    <td>
+
+                        <form method="post" action="/deleteProjet" >
+                            <input type="hidden" name="supprProjet" value="<?= $projet->getIdprojet() ?>">
+                            <button type="submit" class="btn btn-danger fas fa-trash-alt" ></button>
+                        </form>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary fas fa-edit" data-toggle="modal" data-target="#updateProjet<?=$projet->getIdProjet() ?>"></button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary fas fa-search" data-toggle="modal" data-target="#detailProjet<?=$projet->getIdProjet() ?>"></button>
+                    </td>
+                </tr>
+                <!--  formulaire mise à jour Projet-->
+                <div class="modal" id="updateProjet<?=$projet->getIdprojet() ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="updateProjet" method="post" action="/updateProjet" enctype="multipart/form-data">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">mise à jour d'un Projet</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body formulaire mise à jour d'un projet -->
+                                <div class="modal-body">
+                                    <div class="form-group row d-none">
+                                        <label for="idProjetUpdate" class="col-sm-4 col-form-label">Id</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" name="idProjetUpdate" id="idProjetUpdate" value="<?=$projet->getIdprojet() ?>" required>
+                                        </div>
+                                    </div>
+                                    <img src="<?= $projet->getImg() ?>" class="img-fluid" style="margin-bottom: 4%;" alt="img<?= $projet->getNom() ?>"/>
+                                    <div class="form-group row" >
+                                        <label for="imgProjetUpdate" class="col-sm-4 col-form-label">Image</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" class="form-control-file" name="imgProjetUpdate" id="imgProjetUpdate">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="nomProjetUpdate" class="col-sm-4 col-form-label">Nom</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="nomProjetUpdate" id="nomProjetUpdate" value="<?=$projet->getNom(); ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="dateProjetUpdate" class="col-sm-4 col-form-label">date</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="dateProjetUpdate" id="dateProjetUpdate" value="<?=$projet->getDate(); ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="technoProjetUpdate" class="col-sm-4 col-form-label">Techno</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="technoProjetUpdate" id="technoProjetUpdate" value="<?=$projet->getTechno() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" >
+                                        <label for="typeProjet" class="col-sm-4 col-form-label">Type</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="typeProjetUpdate" id="typeProjetUpdate" value="<?=$projet->getType(); ?>" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="lien_gitProjetUpdate" class="col-sm-4 col-form-label">Lien Git</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="lien_gitProjetUpdate" id="lien_gitProjetUpdate" value="<?=$projet->getLien_git(); ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descriptionProjetUpdate">description:</label>
+                                        <textarea class="form-control" rows="5" name="descriptionProjetUpdate" id="descriptionProjetUpdate" required ><?=$projet->getDescription(); ?></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary float-right">Mettre à jour</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal d'affichage du détail d'un Projet-->
+                <div class="modal" id="detailProjet<?=$projet->getIdProjet() ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Détail du Projet</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body formulaire détail Projet -->
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <img src="<?= $projet->getImg() ?>" class="img-fluid" style="margin-bottom: 4%;" alt="img<?= $projet->getNom() ?>"/>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Nom:</dt>
+                                        <dd class="col-sm-6"><?= $projet->getNom() ?></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Type:</dt>
+                                        <dd class="col-sm-6"><?= $projet->getType() ?></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">lien-Git:</dt>
+                                        <dd class="col-sm-6"><?= $projet->getLien_git() ?></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Date:</dt>
+                                        <dd class="col-sm-6"><?= $projet->getDate() ?></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Description: </dt>
+                                        <dd style="word-wrap: break-word;">
+                                            <?= $projet->getDescription() ?>
+                                        </dd>
+
+
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                <tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--  formulaire Creation d'un projet-->
+    <div class="modal" id="createProjet">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="createDiplomes" enctype="multipart/form-data" method="post" action="/createProjet">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nouveau Projet</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="nomProjetCreate" class="col-sm-4 col-form-label">Nom</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="nomProjetCreate" id="nomProjetCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="technoProjetCreate" class="col-sm-4 col-form-label">Techno</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="technoProjetCreate" id="technoProjetCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="TypeProjetCreate" class="col-sm-4 col-form-label">Type</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="typeProjetCreate" id="typeProjetCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lienGitProjetCreate" class="col-sm-4 col-form-label">Lien Git</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="lienGitProjetCreate" id="lienGitProjetCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="dateProjetCreate" class="col-sm-4 col-form-label">date</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="dateProjetCreate" id="dateProjetCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row" >
+                            <label for="imgProjetCreate" class="col-sm-4 col-form-label">Image</label>
+                            <div class="col-sm-8">
+                                <input type="file" class="form-control-file" name="imgProjetCreate" id="imgProjetCreate" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descriptionProjetCreate">description:</label>
+                            <textarea class="form-control" rows="5" name="descriptionProjetCreate" id="descriptionProjetCreate" required ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary float-right">Crée</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 <!-- Crud diplome table -->
-    <div class="container">
+    <div class="container back">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
@@ -331,7 +568,7 @@
 
 
     <!-- Crud Experience Pro table -->
-    <div class="container">
+    <div class="container back">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -529,7 +766,7 @@
 
 
     <!-- Crud Compte Reseaux table -->
-    <div class="container">
+    <div class="container back">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -710,7 +947,7 @@
 
 
     <!-- Crud Competence table -->
-    <div class="container">
+    <div class="container back">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
