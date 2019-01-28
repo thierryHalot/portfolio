@@ -93,5 +93,25 @@
 
 .back{
 
-    margin-bottom: 4%;
+    margin-bottom: 6%;
+}
+.containerPrincipalBackOffice{
+    margin-top: 4%;
+    background: #f5f9ff;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+.titreSectionBack{
+
+cursor: pointer;
+border: 2px solid silver;
+border-radius: 5px;
+    background: #aed3fe;
+
+}
+.titreSectionBack:hover{
+
+    opacity: 0.6;
+    transition-duration: 1s;
+
 }

@@ -1,26 +1,54 @@
-getUsers();
+//getUsers();
 // var xhr = new XMLHttpRequest();
 // alert(xhr.open('GET', 'thierry-halot.fr/api/user'));
 //
 //
 
- function getUsers() {
-     $.ajax({
-         type: "GET",
-         url: "https://zestedesavoir.com/api/membres/",
+//  function getUsers() {
+//      $.ajax({
+//          type: "GET",
+//          url: "https://zestedesavoir.com/api/membres/",
+//
+//         dataType: 'json',
+//          success: function (data) {
+//
+// alert("oui");
+//              },
+//
+//          error:function(data) {
+//              alert("non");
+//              }
+//
+//      })
+//  }
 
-        dataType: 'json',
-         success: function (data) {
+$(document).ready(function(){
+    $("#gestionUser").click(function(){
+        $("#affGestionUser").slideDown('slow');
+        $("#affFormUpdateUser").slideDown('slow');
+    });
+    $("#gestionProjets").click(function(){
+        $("#affGestionProjets").slideDown('slow');
+    });
+    $("#gestionFonct").click(function(){
+        $("#affGestionFonct").slideDown('slow');
+    });
+    $("#gestionDiplomes").click(function(){
+        $("#affGestionDiplomes").slideDown('slow');
+    });
+    $("#gestionExpPro").click(function(){
+        $("#affGestionExpPro").slideDown('slow');
+    });
+    $("#gestionReseauSoc").click(function(){
+        $("#affGestionReseauSoc").slideDown('slow');
+    });
+    $("#gestionComp").click(function(){
+        $("#affGestionComp").slideDown('slow');
+    });
 
-alert("oui");
-             },
 
-         error:function(data) {
-             alert("non");
-             }
+});
 
-     })
- }
 
 // $(function() {
 //     // Sections height

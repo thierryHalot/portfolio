@@ -31,16 +31,25 @@ class ControllerBack extends Controller
 {
     private $user;
 
+
+
     public function __construct()
     {
         parent::__construct();
+        session_start();
         $daoUser = new DAOUser();
         $user = $daoUser->retrieve(1);
-
         $this->user = $user;
+
     }
 
+    //cette méthode permet d'affecter un msg qui servira pour la vue
+    //a prévenir l'utilisateur que tous c'est bien passé
+    public function createMsgConf($message){
 
+     return $_SESSION['message'] = $message;
+
+    }
 
 
 
@@ -105,7 +114,7 @@ class ControllerBack extends Controller
        $user->setMail($formValue["emailUser"]);
 
        $daoUser->update($user);
-
+        $this->createMsgConf('Vos informations personnelles ont bien été mise à jour !!!');
 
 
         header("Location: /admin");
@@ -124,14 +133,16 @@ class ControllerBack extends Controller
         //Je recupere l'id du diplomes à mettre a jour
         $diplome = $daoDiplome->retrieve($formValue["idDiplomeUpdate"]);
 
-$diplome->setNom($formValue["nomDiplomes"]);
-$diplome->setDate_debut($formValue["date_debutDiplome"]);
-$diplome->setDate_fin($formValue["date_finDiplomes"]);
-$diplome->setNom_ecole($formValue["nom_EcoleDiplomes"]);
-$diplome->setDescription($formValue["descriptionDiplomes"]);
+        $diplome->setNom($formValue["nomDiplomes"]);
+        $diplome->setDate_debut($formValue["date_debutDiplome"]);
+        $diplome->setDate_fin($formValue["date_finDiplomes"]);
+        $diplome->setNom_ecole($formValue["nom_EcoleDiplomes"]);
+        $diplome->setDescription($formValue["descriptionDiplomes"]);
 
 //var_dump($diplome);
         $daoDiplome->update($diplome);
+
+        $this->createMsgConf('Le diplôme a été mis à jour avec succès !!!');
         header("Location: /admin");
     }
 
@@ -156,6 +167,8 @@ $diplome->setDescription($formValue["descriptionDiplomes"]);
 
 
         $daoDiplome->create($diplome);
+
+        $this->createMsgConf('Le diplôme a été créé avec succès !!!');
         header("Location: /admin");
     }
 
@@ -165,7 +178,10 @@ $diplome->setDescription($formValue["descriptionDiplomes"]);
         $daodiplome = new DAODiplomes();
        $formDiplome = $this->inputPost();
        $daodiplome->delete($formDiplome['supprDiplome']);
+
+       $this->createMsgConf('Le diplôme a bien été supprimé !!!');
         header("Location: /admin");
+
 }
 
 //fonction qui permet de crée une nouvelle experience pro
@@ -186,6 +202,7 @@ public function createExpPro(){
 
     $daoExpPro->create($expPro);
 
+    $this->createMsgConf('La nouvelle expérience professionnelle a bien été créée !!!');
     header("Location: /admin");
 }
 
@@ -198,6 +215,8 @@ public function deleteExpPro(){
 
 
     $daoExpPro->delete($formValue['supprExpPro']);
+
+    $this->createMsgConf("L'expérience professionnelle a bien été supprimée !!!");
 
     header("Location: /admin");
 }
@@ -219,7 +238,9 @@ public function updateExpPro(){
     $expPro->setDate_sortie($formValue["date_sortieExpPro"]);
     $expPro->setDescription($formValue["descriptionExpPro"]);
 
-$daoExpPro->update($expPro);
+    $daoExpPro->update($expPro);
+
+    $this->createMsgConf("l'expérience professionnelle a bien été mise à jour !!!");
 
     header("Location: /admin");
 }
@@ -261,6 +282,8 @@ public function createProjet(){
             $projet->setImg('http://'.$_SERVER['SERVER_NAME'].'/'.$dossier.$fichier);
             $daoProjet->create($projet);
 
+
+            $this->createMsgConf('Le projet a été créé avec succès !!!');
             //je redirigige l'utilisateur
             header("Location: /admin");
 
@@ -297,6 +320,7 @@ public function deleteProjet(){
         }
         //je supprime le projet
         $daoProjet->delete($projet->getIdprojet());
+        $this->createMsgConf('Le projet a été supprimé avec succès !!!');
 
         //je redirige l'utilisateur
         header("Location: /admin");
@@ -353,6 +377,8 @@ public function updateProjet(){
         }
     }
     //var_dump($projet);
+
+    $this->createMsgConf('Le projet a été mis à jour avec succès !!!');
     $daoProjet->update($projet);
     header("Location: /admin");
 
@@ -373,6 +399,8 @@ public function createFonct(){
     $fonct->setIdProjet($formValue["idProjetCreateFonct"]);
 
     $daoFonct->create($fonct);
+
+    $this->createMsgConf('La fonctionnalité a bien été rajoutée !!!');
     header("Location: /admin");
 
 }
@@ -384,6 +412,8 @@ public function deleteFonct(){
     $daoFonct = new DAOFonctionnalite();
 
     $daoFonct->delete($formValue["supprFonct"]);
+
+    $this->createMsgConf('La fonctionnalité a bien été supprimée !!!');
 
     header("Location: /admin");
 
@@ -400,6 +430,7 @@ public function updateFonct(){
 
     $daoFonct->update($fonct);
 
+    $this->createMsgConf('La fonctionnalité a bien été mise à jour !!!');
     header("Location: /admin");
 
 
@@ -418,6 +449,7 @@ public function deleteCompte_reseaux(){
 
         $daoCompte_reseaux->delete($formValue["supprCompte_reseaux"]);
 
+        $this->createMsgConf('Le compte réseau a bien été supprimé !!!');
 
         header("Location: /admin");
 
@@ -441,6 +473,8 @@ public function createCompte_reseaux(){
 
     $daoCompte_reseaux->create($compte_reseau);
 
+    $this->createMsgConf('Le compte réseau a bien été créé !!!');
+
     header("Location: /admin");
 }
 
@@ -459,6 +493,8 @@ public function updateCompte_reseaux(){
 
 
     $daoCompte_reseaux->update($compte_reseau);
+
+    $this->createMsgConf('Le compte réseau a bien été mis à jour !!!');
 
     header("Location: /admin");
 
@@ -481,6 +517,7 @@ public function createCompetence(){
 
     $daoCompetence->create($competence);
 
+    $this->createMsgConf('Le compétence a bien été rajoutée !!!');
     header("Location: /admin");
 
 
@@ -503,6 +540,8 @@ public function updateCompetence(){
 
     $daoCompetence->update($competence);
 
+    $this->createMsgConf('Le compétence a bien été mise à jour !!!');
+
     header("Location: /admin");
 }
 
@@ -515,6 +554,8 @@ public function deleteCompetence(){
     $daoCompetence = new DAOCompetence();
 
     $daoCompetence->delete($formValue["supprCompetence"]);
+
+    $this->createMsgConf('Le compétence a bien été supprimée !!!');
 
     header("Location: /admin");
 }
