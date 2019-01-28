@@ -1,4 +1,5 @@
 <?php
+session_start();
 // import de la classe Routing ( pour l'utiliser)
 use BWB\Framework\mvc\Routing;
 // pour beneficier de l'autoload de composer

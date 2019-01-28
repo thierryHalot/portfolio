@@ -25,6 +25,21 @@
 
 <!-- Nouvelle page Acueil-->
 <div class="container contenue accueil" id="accueil">
+
+
+    <?php if(isset($_SESSION['msgContact'])):?>
+
+        <?php if($_SESSION['msgContact']):?>
+            <p style="color: green; font-size: large;"><i class="fa fa-smile-o" aria-hidden="true" style="color: green;"></i>
+                Votre mail a bien été envoyé, merci de m'avoir contacter</p>
+        <?php else:?>
+
+            <p style="color: red; font-size: large;"><i class="fa fa-frown-o" aria-hidden="true" style="color: red"></i>
+                Une erreur est survenue</p>
+        <?php endif; ?>
+    <?php unset($_SESSION['msgContact'])?>
+    <?php endif; ?>
+
     <div class="media ">
         <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
         <div class="media-body align-self-center">
@@ -221,30 +236,30 @@
         </div>
     </div>
     <br>
-    <form>
+    <form method="post" action="/sendContactMail">
 <h6>Me contacter :</h6>
         <br>
         <div class="form-group row" >
             <label for="nomContact" class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="nomContact" placeholder="Veuillez renseigné votre nom">
+            <input type="text" class="form-control" name="nomContact" id="nomContact" placeholder="Veuillez renseigné votre nom">
             </div>
         </div>
         <div class="form-group row">
             <label for="prenomContact" class="col-sm-2 col-form-label">Prénom</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="prenomContact" placeholder="Veuillez renseigné votre Prénom">
+            <input type="text" class="form-control" name="prenomContact" id="prenomContact" placeholder="Veuillez renseigné votre Prénom">
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <label for="emailContact" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Veuillez renseigné votre email">
+                <input type="email" class="form-control" name="emailContact" id="emailContact" placeholder="Veuillez renseigné votre email">
             </div>
         </div>
         <div class="form-group">
             <label for="messageContact">Message:</label>
-            <textarea class="form-control" rows="5" id="messageContact" name="text"></textarea>
+            <textarea class="form-control" rows="5" name="messageContact" id="messageContact" ></textarea>
         </div>
         <div>
         <button type="submit" class="btn btn-primary float-right">Envoyer</button>

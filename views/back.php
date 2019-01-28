@@ -7,7 +7,7 @@
 
         echo "<p><i class=\"fa fa-check-square\" style='color: green' aria-hidden=\"true\"></i>
 ".$_SESSION['message']."</p>";
-
+        unset($_SESSION['message']);
     }
     ?>
 <div id="gestionUser">

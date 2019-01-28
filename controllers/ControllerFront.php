@@ -76,4 +76,31 @@ class ControllerFront extends Controller
 
 
     }
+
+    //cette méthode permet d'envoyé le mail du formulaire de contact
+    public function sendContactMail(){
+
+        //récupération des valeurs du formulaire
+        $formValue = $this->inputPost();
+        $nomContact = $formValue['nomContact'];
+        $prenomContact = $formValue['prenomContact'];
+        $emailContact = $formValue['emailContact'];
+        $mesgContact = $formValue['messageContact'];
+
+
+        $to = "halotthierry34@gmail.com";
+        $objet = "PorteFolio, mail de ".$emailContact;
+        $message = "Nom : ".$nomContact."\nPrenom : ".$prenomContact."\nMail : ".$emailContact." \n \n".$mesgContact;
+
+        if(mail($to,$objet,$message)){
+
+           $_SESSION['msgContact'] = true;
+        }else{
+
+            $_SESSION['msgContact'] = false;
+        }
+
+        header("Location: /");
+
+    }
 }

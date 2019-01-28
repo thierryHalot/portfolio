@@ -36,7 +36,7 @@ class ControllerBack extends Controller
     public function __construct()
     {
         parent::__construct();
-        session_start();
+
         $daoUser = new DAOUser();
         $user = $daoUser->retrieve(1);
         $this->user = $user;
