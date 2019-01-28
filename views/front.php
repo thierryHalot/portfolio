@@ -28,7 +28,7 @@
     <div class="media ">
         <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
         <div class="media-body align-self-center">
-                <h1>Thierry Halot</h1>
+                <h1><?= $user->getPrenom()." ".$user->getNom() ?></h1>
             <h1>Développeur Junior</h1>
         </div>
     </div>
@@ -44,7 +44,7 @@
 
 <!-- Competence -->
 <div class="container contenue" id="competence">
-    <h1><i class="fas fa-arrow-alt-circle-up"></i>Mes Compétences</h1>
+    <h1><i class="fas fa-arrow-alt-circle-up"></i>Les Compétences où je suis le plus à l'aise :</h1>
     <br>
     <div>
         <p>HTML</p>
@@ -85,32 +85,7 @@
 <div class="container contenue">
     <h1><i class="fas fa-book-reader" id="projets"></i>Mes Projets</h1>
     <br>
-    <div class="row">
-        <div class="col-md-4">
 
-            <div class="card">
-                <h1 class="card-title text-center">Nom projet</h1>
-                <img class="card-img img-responsive" src="public/img/photo.jpg" alt="photoAccueil" />
-
-            </div>
-        </div>
-        <div class="col-md-4">
-
-            <div class="card">
-                <h1 class="card-title text-center">Nom projet</h1>
-                <img class="card-img img-responsive" src="public/img/photo.jpg" alt="photoAccueil" />
-
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <h1 class="card-title text-center">Nom projet</h1>
-                <img class="card-img img-responsive" src="public/img/photo.jpg" alt="photoAccueil" />
-
-            </div>
-        </div>
-    </div>
-    <br>
     <!-- Test insertion projet de maniere dynamique-->
     <div class="row">
         <?php foreach ($projets as $projet):?>
@@ -120,11 +95,11 @@
                 <h1 class="card-title text-center"><?= $projet->getNom() ?></h1>
                 <img class="card-img img-responsive" src="<?= $projet->getImg()?>" alt="photoProjet<?= $projet->getNom()?>" />
                 <div class="card-body">
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#affProjet<?=$projet->getIdprojet() ?>">
                     plus d'info !
                 </button>
                 </div>
-                <div class="modal" id="myModal">
+                <div class="modal" id="affProjet<?=$projet->getIdprojet() ?>">
                     <div class="modal-dialog">
                         <div class="modal-content">
 
@@ -136,6 +111,8 @@
 
                             <!-- Modal body -->
                             <div class="modal-body">
+
+
                                 <dl class="row">
                                     <dt class="col-sm-6">Nom:</dt>
                                     <dd class="col-sm-6"><?= $projet->getNom() ?></dd>
@@ -143,10 +120,6 @@
                                 <dl class="row">
                                     <dt class="col-sm-6">Type:</dt>
                                     <dd class="col-sm-6"><?= $projet->getType() ?></dd>
-                                </dl>
-                                <dl class="row">
-                                    <dt class="col-sm-6">lien-Git:</dt>
-                                    <dd class="col-sm-6"><?= $projet->getLien_git() ?></dd>
                                 </dl>
                                 <dl class="row">
                                     <dt class="col-sm-6">Date:</dt>
@@ -157,14 +130,25 @@
                                     <dd style="word-wrap: break-word;">
                                         <?= $projet->getDescription() ?>
                                     </dd>
-
-
                                 </dl>
+                                <?php if (!empty($projet->getFonctionalites())):?>
+                                                <h6>Fonctionnalités principale:</h6>
+                                                <?php foreach ($projet->getFonctionalites() as $fonct):?>
+                                                    <p>-<?= $fonct->getNom() ?> :<br>
+                                                    <?= $fonct->getDescription() ?></p>
+
+                                                <?php endforeach; ?>
+
+<?php endif; ?>
+
+
                             </div>
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <a href="https://github.com/thierryHalot" class="float-left btn btn-primary">Voir sur GitHub</a>
+                                <?php if (!empty($projet->getLien_git()&& $projet->getLien_git() != 'null')): ?>
+                                <a href="<?= $projet->getLien_git() ?>" class="float-left btn btn-primary">Voir sur GitHub</a>
+                                <?php endif;?>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                             </div>
 
@@ -172,7 +156,9 @@
                     </div>
                 </div>
             </div>
+            <br>
             </div>
+
         <?php endforeach; ?>
         </div>
 
@@ -184,36 +170,30 @@
     <h1><i class="fas fa-grin"></i></i>Qui suis-je ?</h1>
     <br>
 <div>
-    <p>« Tddexte » est issu du mot latin « textum », dérivé du verbe « texere » qui signifie « tisser ». Le mot s'applique à l'entrelacement des fibres utilisées dans le tissage, voir par exemple Ovide : « Quo super iniecit textum rude sedula Baucis = (un siège) sur lequel Baucis empressée avait jeté un tissu grossier »2 ou au tressage (exemple chez Martial « Vimineum textum = panier d'osier tressé »). Le verbe a aussi le sens large de construire comme dans « basilicam texere = construire une basilique » chez Cicéron3.
-
-        Le sens figuré d'éléments de langage organisés et enchaînés apparaît avant l'Empire romain : il désigne un agencement particulier du discours. Exemple : « epistolas texere = composer des épîtres » - Cicéron (Ier siècle av. J.-C.)4 ou plus nettement chez Quintilien (Ier siècle apr. J.-C.) : « verba in textu jungantur = l'agencement des mots dans la phrase »5.
-
-        Les formes anciennes du Moyen Âge désignent au XIIe siècle le volume qui contient le texte sacré des Évangiles, puis au XIIIe siècle. le texte original d'un livre saint ou des propos de quelqu'un. Au XVIIe siècle le mot s’applique au passage d'un ouvrage pris comme référence et au début du XIXe siècle le mot texte a son sens général d'« écrit »6. </p>
+    <p><?= $user->getDescription() ?></p>
 </div>
     <div class="row">
-        <div class="col-md-3 col-xs-6">
-            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
-            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
-                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
-                oui archi séche</p>
+        <div class="col-md-7">
+            <h2><img src="public/icones/icone_exp.png" class="img-fluid" style="height: 50px; width: 50px">Expériences professionnelles</h2>
+            <br>
+            <ul>
+                <?php foreach ($expPros as $expPro) :?>
+
+                    <li><strong><?=$expPro->getNom_boite()." ( du ".$expPro->getDate_entrer()." au ".$expPro->getDate_sortie()." )" ?></strong></li>
+                    <p><?= $expPro->getDescription() ?></p>
+                <?php endforeach;?>
+            </ul>
         </div>
-        <div class="col-md-3 col-xs-6">
-            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
-            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
-                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
-                oui archi séche</p>
-        </div>
-        <div class="col-md-3 col-xs-6">
-            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
-            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
-                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
-                oui archi séche</p>
-        </div>
-        <div class="col-md-3 col-xs-6">
-            <h1 class="text-center"><i class="fas fa-arrow-alt-circle-up"></i></h1>
-            <p>je m'appelle m'achin bidul chouette et j'aime les pattes,c'est coul bordel de test de texte super long,
-                on va voir ce que sa donne ,j'uttilise pas le lorum itsim mais pourquoi donc,les chaussette de l'archiduchesse sont t'elle sèche,
-                oui archi séche</p>
+        <div class="col-md-5">
+            <h2><i class="fa fa-graduation-cap" aria-hidden="true"></i>Diplômes</h2>
+            <br>
+            <ul>
+                <?php foreach ($diplomes as $diplome) :?>
+
+                    <li><strong><?=$diplome->getDate_debut()." : ".$diplome->getDate_fin()." ".$diplome->getNom_ecole() ?></strong></li>
+                    <p><?= $diplome->getNom() ?></p>
+                <?php endforeach;?>
+            </ul>
         </div>
     </div>
 <br>
@@ -232,10 +212,10 @@
         <div class="media-body align-self-center">
            <p>
               Nom: <?= $user->getNom() ?><br>
-               Prenom:<?= $user->getPrenom() ?><br>
+               Prenom: <?= $user->getPrenom() ?><br>
                Tel: <?= $user->getTel() ?> <br>
-              Adresse:<?= $user->getAdresse() ?><br>
-               Code postal:<?= $user->getCode_postal() ?><br>
+              Adresse: <?= $user->getAdresse() ?><br>
+               Code postal: <?= $user->getCode_postal() ?><br>
               Ville: <?= $user->getVille() ?><br>
            </p>
         </div>
@@ -247,19 +227,19 @@
         <div class="form-group row" >
             <label for="nomContact" class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="nomContact" placeholder="Example input">
+            <input type="text" class="form-control" id="nomContact" placeholder="Veuillez renseigné votre nom">
             </div>
         </div>
         <div class="form-group row">
-            <label for="prenomContact" class="col-sm-2 col-form-label">Prenom</label>
+            <label for="prenomContact" class="col-sm-2 col-form-label">Prénom</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="prenomContact" placeholder="Another input">
+            <input type="text" class="form-control" id="prenomContact" placeholder="Veuillez renseigné votre Prénom">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Veuillez renseigné votre email">
             </div>
         </div>
         <div class="form-group">
@@ -275,10 +255,10 @@
 <footer>
 <div class="container monFooter">
     <div class="text-center center-block">
-        <a href="https://www.facebook.com/thierry.halot.39"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
-        <a href="https://twitter.com/HalotThierry"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
-        <a href="https://fr.linkedin.com/in/thierry-halot-491121160"><i id="social-gp" class="fa fa-linkedin-square fa-3x social"></i></a>
-        <a href="https://github.com/thierryHalot"><i id="social-em" class="fa fa-github fa-3x social"></i></a>
+        <?php foreach ($comptReseaux as $comptReseau) :?>
+        <a href="<?=$comptReseau->getLien()?>" class="<?=$comptReseau->getImg()?>"></a>
+        <?php endforeach;?>
+
     </div>
     <hr>
 </div>
