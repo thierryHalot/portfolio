@@ -1239,7 +1239,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row" >
-                                        <label for="imgCompetenceUpdate" class="col-sm-4 col-form-label">Classe:</label>
+                                        <label for="imgCompetenceUpdate" class="col-sm-4 col-form-label">Classe Fontawesome 4:</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="imgCompetenceUpdate" id="imgCompetenceUpdate" value="<?=$competence->getLogo() ?>" required>
                                         </div>
@@ -1250,7 +1250,18 @@
                                             <input type="number" class="form-control" name="progressionCompetenceUpdate" id="progressionCompetenceUpdate" value="<?=$competence->getProgression() ?>" required>
                                         </div>
                                     </div>
-
+                                    <div class="form-group row">
+                                        <label for="couleurCompetenceUpdate" class="col-sm-4 col-form-label">Couleur:</label>
+                                        <div class="col-sm-8">
+                                            <input type="color" class="form-control" name="couleurCompetenceUpdate" id="couleurCompetenceUpdate" value="<?=$competence->getCouleur() ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="vitesse_affCompetenceUpdate" class="col-sm-4 col-form-label">Vitesse affichage:</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" name="vitesse_affCompetenceUpdate" id="vitesse_affCompetenceUpdate" value="<?=$competence->getVitesse_aff() ?>" required>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Modal footer -->
@@ -1281,14 +1292,21 @@
                                         <dd class="col-sm-6"><?= $competence->getNom() ?></dd>
                                     </dl>
                                     <dl class="row">
-                                        <dt class="col-sm-6">Classe:</dt>
+                                        <dt class="col-sm-6">Classe Fontawesome 4:</dt>
                                         <dd class="col-sm-6"><?= $competence->getLogo() ?></dd>
                                     </dl>
                                     <dl class="row">
                                         <dt class="col-sm-6">Progression:</dt>
-                                        <dd class="col-sm-6"><?= $competence->getProgression() ?></dd>
+                                        <dd class="col-sm-6"><?= $competence->getProgression()." %" ?></dd>
                                     </dl>
-
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Couleur:</dt>
+                                        <dd class="col-sm-6"><?= $competence->getCouleur() ?></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-6">Vitesse Affichage:</dt>
+                                        <dd class="col-sm-6"><?= $competence->getVitesse_aff()?></dd>
+                                    </dl>
                                 </div>
                             </div>
                         </div>
@@ -1317,7 +1335,7 @@
                             </div>
                         </div>
                         <div class="form-group row" >
-                            <label for="imgCompetenceCreate" class="col-sm-4 col-form-label">Classe:</label>
+                            <label for="imgCompetenceCreate" class="col-sm-4 col-form-label">Classe Fontawesome 4:</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="imgCompetenceCreate" id="imgCompetenceCreate" value="" required>
                             </div>
@@ -1325,7 +1343,19 @@
                         <div class="form-group row">
                             <label for="progressionCompetenceCreate" class="col-sm-4 col-form-label">Progression:</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="progressionCompetenceCreate" id="progressionCompetenceCreate" value="" required>
+                                <input type="number" class="form-control" name="progressionCompetenceCreate" id="progressionCompetenceCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="couleurCompetenceCreate" class="col-sm-4 col-form-label">Couleur:</label>
+                            <div class="col-sm-8">
+                                <input type="color" class="form-control" name="couleurCompetenceCreate" id="couleurCompetenceCreate" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="vitesse_affCompetenceCreate" class="col-sm-4 col-form-label">Vitesse affichage:</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="vitesse_affCompetenceCreate" id="vitesse_affCompetenceCreate" value="" required>
                             </div>
                         </div>
                     </div>

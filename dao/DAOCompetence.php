@@ -18,7 +18,7 @@ class DAOCompetence extends DAO
     public function create($entity)
     {
 
-        $sql = "INSERT INTO competence (nom,logo,user_iduser,progression) VALUES('".$entity->getNom()."','".$entity->getLogo()."',".$entity->getUser_idser().",".$entity->getProgression().")";
+        $sql = "INSERT INTO competence (nom,logo,user_iduser,progression,couleur,vitesse_aff) VALUES('".$entity->getNom()."','".$entity->getLogo()."',".$entity->getUser_idser().",".$entity->getProgression().",'".$entity->getCouleur()."',".$entity->getVitesse_aff().")";
         $this->getPdo()->query($sql);
 
     }
@@ -38,6 +38,8 @@ class DAOCompetence extends DAO
         $entity->setUser_iduser((int)$result['user_iduser']);
         $entity->setProgression((int)$result['progression']);
         $entity->setIdcompetence((int)$result['idcompetence']);
+        $entity->setCouleur($result['couleur']);
+        $entity->setVitesse_aff((int)$result['vitesse_aff']);
 
         return $entity;
 
@@ -47,7 +49,7 @@ class DAOCompetence extends DAO
     public function update($entity)
     {
 
-        $sql = "UPDATE competence SET nom= '".$entity->getNom()."',logo= '".$entity->getLogo()."', user_iduser =".$entity->getUser_idser().", progression=".$entity->getProgression()." WHERE idcompetence = ". $entity->getIdcompetence();
+        $sql = "UPDATE competence SET nom= '".$entity->getNom()."',logo= '".$entity->getLogo()."', user_iduser =".$entity->getUser_idser().", progression=".$entity->getProgression().", couleur='".$entity->getCouleur()."', vitesse_aff=".$entity->getVitesse_aff()." WHERE idcompetence = ". $entity->getIdcompetence();
         $this->getPdo()->query($sql);
     }
 
@@ -75,7 +77,8 @@ class DAOCompetence extends DAO
             $entity->setUser_iduser((int)$result['user_iduser']);
             $entity->setProgression((int)$result['progression']);
             $entity->setIdcompetence((int)$result['idcompetence']);
-
+            $entity->setCouleur($result['couleur']);
+            $entity->setVitesse_aff((int)$result['vitesse_aff']);
             array_push($entities,$entity);
         }
         return $entities;
@@ -117,6 +120,8 @@ class DAOCompetence extends DAO
             $entity->setUser_iduser((int)$result['user_iduser']);
             $entity->setProgression((int)$result['progression']);
             $entity->setIdcompetence((int)$result['idcompetence']);
+            $entity->setCouleur($result['couleur']);
+            $entity->setVitesse_aff((int)$result['vitesse_aff']);
 
             array_push($entities,$entity);
         };

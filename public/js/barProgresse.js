@@ -27,14 +27,14 @@ function framePerso(progress, id, time) {
 }
 function createVueComp(competence){
 
-    $('#listeCompetences').append("<p>"+competence.nom
-        +"</p><div class='fondBarProgresse'><div style='color: white;text-align: center;background-color: #2196F3;' class='skills "+competence.nom
+    $('#listeCompetences').append("<p class='"+competence.logo+"'>"+" "+competence.nom
+        +"</p><div class='fondBarProgresse'><div style='color: white;text-align: center;background-color: "+competence.couleur+";' class='skills "+competence.nom
         +"' id='skill"+competence.nom+"'>"+competence.progression+"%</div></div>");
 
     //je stocke la hauteur de ma fenetre
     var height = $(window).height();
     if (height > 200) {
-    framePerso(competence.progression,"skill"+competence.nom,50);
+    framePerso(competence.progression,"skill"+competence.nom,competence.vitesse_aff);
     }
 };
 

@@ -513,6 +513,8 @@ public function createCompetence(){
     $competence->setNom($formValue["NomCompetenceCreate"]);
     $competence->setLogo($formValue["imgCompetenceCreate"]);
     $competence->setProgression($formValue["progressionCompetenceCreate"]);
+    $competence->setCouleur($formValue["couleurCompetenceCreate"]);
+    $competence->setVitesse_aff($formValue["vitesse_affCompetenceCreate"]);
     $competence->setUser_iduser($this->user->getIduser());
 
     $daoCompetence->create($competence);
@@ -537,7 +539,8 @@ public function updateCompetence(){
     $competence->setNom($formValue["nomCompetenceUpdate"]);
     $competence->setLogo($formValue["imgCompetenceUpdate"]);
     $competence->setProgression($formValue["progressionCompetenceUpdate"]);
-
+    $competence->setCouleur($formValue["couleurCompetenceUpdate"]);
+    $competence->setVitesse_aff($formValue["vitesse_affCompetenceUpdate"]);
     $daoCompetence->update($competence);
 
     $this->createMsgConf('Le compétence a bien été mise à jour !!!');

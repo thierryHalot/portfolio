@@ -225,6 +225,8 @@ class DAOUser extends DAO
             $entity->setUser_iduser((int)$result['user_iduser']);
             $entity->setProgression((int)$result['progression']);
             $entity->setIdcompetence((int)$result['idcompetence']);
+            $entity->setCouleur($result['couleur']);
+            $entity->setVitesse_aff((int)$result['vitesse_aff']);
 
             array_push($entities,$entity);
         }

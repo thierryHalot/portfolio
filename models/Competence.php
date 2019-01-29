@@ -20,8 +20,33 @@ class Competence
     private $logo;
     private $user_iduser;
     private $progression;
+    private $couleur;
+    private $vitesse_aff;
+
 
     /* getter et setter*/
+    public function getCouleur(){
+
+        return $this->couleur;
+    }
+
+    public function setCouleur($val){
+
+        $this->couleur = $val;
+
+    }
+
+    public function getVitesse_aff(){
+
+        return $this->vitesse_aff;
+
+    }
+
+    public function setVitesse_aff($val){
+
+        $this->vitesse_aff = $val;
+
+    }
 
     public function getProgression(){
 
@@ -45,7 +70,9 @@ class Competence
             "nom" => $this->nom,
             "logo" => $this->logo,
             "progression" => $this->progression,
-            "id_user" => $this->user_iduser
+            "id_user" => $this->user_iduser,
+            "couleur" => $this->couleur,
+            "vitesse_aff" => $this->vitesse_aff
 
         ];
 
