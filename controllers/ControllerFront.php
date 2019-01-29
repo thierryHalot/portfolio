@@ -77,6 +77,27 @@ class ControllerFront extends Controller
 
     }
 
+    //methodes qui retourne les compétences de l'utilisateur au format json.
+    public function ApiGetCompetence(){
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
+
+        $DaoUser = new DAOUser();
+        $user = $DaoUser->retrieve(1);
+
+        $competences = $DaoUser->getAllCompetences($user->getIduser());
+
+        $tabCompetences = array();
+
+        foreach ($competences as $competence){
+
+        array_push($tabCompetences,$competence->getTabAsso());
+
+        }
+
+        echo json_encode($tabCompetences,true);
+    }
+
     //cette méthode permet d'envoyé le mail du formulaire de contact
     public function sendContactMail(){
 

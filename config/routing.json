@@ -25,6 +25,7 @@
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
     "/sendContactMail": "ControllerFront:sendContactMail",
+    "/api/getCompetences": "ControllerFront:ApiGetCompetence",
     "/api/user":{
         "GET":"ControllerFront:get",
         "POST":"DefaultController:getDatasFromPOST",

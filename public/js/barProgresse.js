@@ -15,6 +15,7 @@ function framePerso(progress, id, time) {
             //arrete le set interval
             clearInterval(interval);
 
+
         } else {
             width++;
             return elem.style.width = width + '%';
@@ -24,20 +25,61 @@ function framePerso(progress, id, time) {
     }, time);
 
 }
+function createVueComp(competence){
 
-//je stocke la hauteur de ma fenetre
-var height = $(window).height();
+    $('#listeCompetences').append("<p>"+competence.nom
+        +"</p><div class='fondBarProgresse'><div style='color: white;text-align: center;background-color: #2196F3;' class='skills "+competence.nom
+        +"' id='skill"+competence.nom+"'>"+competence.progression+"%</div></div>");
+
+    //je stocke la hauteur de ma fenetre
+    var height = $(window).height();
+    if (height > 200) {
+    framePerso(competence.progression,"skill"+competence.nom,50);
+    }
+};
+
+
+function getCompetences() {
+      $.ajax({
+          type: "GET",
+          url: "http://portfolio.bwb/api/getCompetences",
+
+         dataType: 'json',
+          success: function (data) {
+            let i = 0;
+
+            while(i <= data.length){
+
+
+                createVueComp(data[i]);
+
+                i++
+            }
+            console.log(data);
+              },
+
+          error:function(data) {
+              console.log(data);
+              }
+
+      })
+  }
+
 
 //si l'utilisateur descend en dessous des 100 px ,
 // j'affiche l'animation de mes bars de progression
-if (height > 200) {
 
-    framePerso(90,"skillHtml",50);
-    framePerso(80,"skillCss",40);
-    framePerso(70,"skillJs",30);
-    framePerso(70,"skillPhp",20);
-    framePerso(65,"skillAjax",20);
-    framePerso(60,"skillSymfony",20);
-    framePerso(80,"skillSql",20);
-}
+
+    // framePerso(90,"skillHtml",50);
+    // framePerso(80,"skillCss",40);
+    // framePerso(70,"skillJs",30);
+    // framePerso(70,"skillPhp",20);
+    // framePerso(65,"skillAjax",20);
+    // framePerso(60,"skillSymfony",20);
+    // framePerso(80,"skillSql",20);
+
+
+    getCompetences();
+
+
 

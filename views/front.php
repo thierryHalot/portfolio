@@ -61,37 +61,37 @@
 <div class="container contenue" id="competence">
     <h1><i class="fas fa-arrow-alt-circle-up"></i>Les Compétences où je suis le plus à l'aise :</h1>
     <br>
-    <div>
-        <p>HTML</p>
-        <div class="fondBarProgresse" >
-            <div class="skills html" id="skillHtml">90%</div>
-        </div>
-
-        <p>CSS</p>
-        <div class="fondBarProgresse">
-            <div class="skills css" id="skillCss">80%</div>
-        </div>
-
-        <p>JavaScript</p>
-        <div class="fondBarProgresse">
-            <div class="skills js" id="skillJs">65%</div>
-        </div>
-        <p>Ajax</p>
-        <div class="fondBarProgresse">
-            <div class="skills ajax" id="skillAjax">65%</div>
-        </div>
-        <p>PHP</p>
-        <div class="fondBarProgresse">
-            <div class="skills php" id="skillPhp">60%</div>
-        </div>
-        <p>Symfony</p>
-        <div class="fondBarProgresse">
-            <div class="skills symfony" id="skillSymfony">60%</div>
-        </div>
-        <p>SQL</p>
-        <div class="fondBarProgresse">
-            <div class="skills sql" id="skillSql">60%</div>
-        </div>
+    <div id="listeCompetences">
+<!--        <p>HTML</p>-->
+<!--        <div class="fondBarProgresse" >-->
+<!--            <div class="skills html" id="skillHtml">90%</div>-->
+<!--        </div>-->
+<!---->
+<!--        <p>CSS</p>-->
+<!--        <div class="fondBarProgresse">-->
+<!--            <div class="skills css" id="skillCss">80%</div>-->
+<!--        </div>-->
+<!---->
+<!--        <p>JavaScript</p>-->
+<!--        <div class="fondBarProgresse">-->
+<!--            <div class="skills js" id="skillJs">65%</div>-->
+<!--        </div>-->
+<!--        <p>Ajax</p>-->
+<!--        <div class="fondBarProgresse">-->
+<!--            <div class="skills ajax" id="skillAjax">65%</div>-->
+<!--        </div>-->
+<!--        <p>PHP</p>-->
+<!--        <div class="fondBarProgresse">-->
+<!--            <div class="skills php" id="skillPhp">60%</div>-->
+<!--        </div>-->
+<!--        <p>Symfony</p>-->
+<!--        <div class="fondBarProgresse">-->
+<!--            <div class="skills symfony" id="skillSymfony">60%</div>-->
+<!--        </div>-->
+<!--        <p>SQL</p>-->
+<!--        <div class="fondBarProgresse">-->
+<!--            <div class="skills sql" id="skillSql">60%</div>-->
+<!--        </div>-->
     </div>
 </div>
 

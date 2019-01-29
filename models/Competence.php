@@ -37,6 +37,20 @@ class Competence
         return $this->idcompetence;
     }
 
+    public function getTabAsso(){
+
+        return $array = [
+
+            "id" => $this->idcompetence,
+            "nom" => $this->nom,
+            "logo" => $this->logo,
+            "progression" => $this->progression,
+            "id_user" => $this->user_iduser
+
+        ];
+
+
+    }
     public function setIdcompetence($val){
 
         $this->idcompetence = $val;
