@@ -24,6 +24,7 @@
 </nav>
 
 <!-- Nouvelle page Acueil-->
+<div class="pageAccueil">
 <div class="container contenue accueil" id="accueil">
 
 
@@ -41,25 +42,69 @@
     <?php endif; ?>
 
     <div class="media ">
-        <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
+        <img class="mr-5 img-responsive rounded photoProfil" style="height: 150px; width: 150px; " src="public/img/petit.jpg" alt="photoThierryHalot">
         <div class="media-body align-self-center">
                 <h1><?= $user->getPrenom()." ".$user->getNom() ?></h1>
             <h1>Développeur Junior</h1>
         </div>
     </div>
     <br>
-    <div class="offset-md-6 col-md-4">
-        <h1>Concevoir </h1>
-        <h1 style="padding-left: 20%;">Réaliser</h1>
-        <h1 style="padding-left: 40%;">Maintenir </h1>
+    <div class="offset-md-6 col-md-4 slogan" style="margin-bottom: 20px">
+        <h1 style="text-align: justify;" class="slideEffect">Concevoir </h1>
+        <h1 class="slideEffect" style="padding-left: 20%; text-align: justify;  text-indent: 50px; letter-spacing: 3px;">Réaliser</h1>
+        <h1 class="slideEffect" style="padding-left: 40%; text-align: justify;  text-indent: 50px; letter-spacing: 3px;">Maintenir </h1>
     </div>
     <br>
-    <h1 class="text-center">(<?= $user->getStatut() ?>)</h1>
+    <h1 class="text-center"  id="fonction">(<?= $user->getStatut() ?>)</h1>
+    <p class="suivant"><i class="fa fa-chevron-circle-down" aria-hidden="true">Suivant</i></p>
 </div>
 
+</div>
+
+<!-- Presentation -->
+<div class="pagePresentation">
+    <div class="container contenue" id="presentation" >
+        <h1 class="titreSectionFront"><i class="fas fa-grin" onmouseenter="tourne(this)"></i></i> Qui suis-je ?</h1>
+        <br>
+        <div>
+            <p><?= $user->getDescription() ?></p>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <h2><img src="public/icones/icone_exp.png" class="img-fluid" style="height: 50px; width: 50px"> Expériences professionnelles</h2>
+                <br>
+                <ul>
+                    <?php foreach ($expPros as $expPro) :?>
+
+                        <li><strong><?=$expPro->getNom_boite()." ( du ".$expPro->getDate_entrer()." au ".$expPro->getDate_sortie()." )" ?></strong></li>
+                        <p><?= $expPro->getDescription() ?></p>
+                    <?php endforeach;?>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h2><i class="fa fa-graduation-cap" aria-hidden="true"></i> Diplômes</h2>
+                <br>
+                <ul>
+                    <?php foreach ($diplomes as $diplome) :?>
+
+                        <li><strong><?=$diplome->getDate_debut()." : ".$diplome->getDate_fin()." ".$diplome->getNom_ecole() ?></strong></li>
+                        <p><?= $diplome->getNom() ?></p>
+                    <?php endforeach;?>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <form method="get" action="public/document/CV_Thierry_Halot.pdf">
+            <input type="submit" value="Télécharger mon cv" class="btn btn-primary float-lg-right bouton" onclick="window.location='<?= "http://".$_SERVER['HTTP_HOST']."/public/document/CV_Thierry_Halot.pdf"  ?>';">
+            <br>
+        </form>
+        <p class="suivant"><i class="fa fa-chevron-circle-down" aria-hidden="true">Suivant</i></p>
+    </div>
+</div>
 <!-- Competence -->
+<div class="pageCompetence">
 <div class="container contenue" id="competence">
-    <h1><i class="fas fa-arrow-alt-circle-up"></i>Les Compétences où je suis le plus à l'aise :</h1>
+    <h1 class="titreSectionFront"><i class="fas fa-arrow-alt-circle-up" onmouseenter="tourne(this)"></i> Les Compétences où je suis le plus à l'aise :</h1>
     <br>
     <div id="listeCompetences">
 <!--        <p>HTML</p>-->
@@ -93,12 +138,13 @@
 <!--            <div class="skills sql" id="skillSql">60%</div>-->
 <!--        </div>-->
     </div>
+    <p class="suivant"><i class="fa fa-chevron-circle-down" aria-hidden="true">Suivant</i></p>
 </div>
-
+</div>
 <!-- Projets -->
-
+<div class="pageProjets">
 <div class="container contenue">
-    <h1><i class="fas fa-book-reader" id="projets"></i>Mes Projets</h1>
+    <h1 class="titreSectionFront"><i class="fas fa-book-reader" onmouseenter="tourne(this)" id="projets"></i> Mes Projets</h1>
     <br>
 
     <!-- Test insertion projet de maniere dynamique-->
@@ -106,11 +152,11 @@
         <?php foreach ($projets as $projet):?>
         <div class="col-md-4">
 
-            <div class="card">
+            <div class="card cardProjet">
                 <h1 class="card-title text-center"><?= $projet->getNom() ?></h1>
-                <img class="card-img img-responsive" src="<?= $projet->getImg()?>" alt="photoProjet<?= $projet->getNom()?>" />
+                <img class="card-img img-responsive col-6 offset-3"  src="<?= $projet->getImg()?>" alt="photoProjet<?= $projet->getNom()?>" />
                 <div class="card-body">
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#affProjet<?=$projet->getIdprojet() ?>">
+                <button type="button" class="btn btn-primary float-right bouton" data-toggle="modal" data-target="#affProjet<?=$projet->getIdprojet() ?>">
                     plus d'info !
                 </button>
                 </div>
@@ -151,12 +197,8 @@
                                                 <?php foreach ($projet->getFonctionalites() as $fonct):?>
                                                     <p>-<?= $fonct->getNom() ?> :<br>
                                                     <?= $fonct->getDescription() ?></p>
-
                                                 <?php endforeach; ?>
-
-<?php endif; ?>
-
-
+                                <?php endif; ?>
                             </div>
 
                             <!-- Modal footer -->
@@ -170,60 +212,26 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <br>
             </div>
 
         <?php endforeach; ?>
-        </div>
 
+        </div>
+    <p class="suivant"><i class="fa fa-chevron-circle-down" aria-hidden="true">Suivant</i></p>
+</div>
 </div>
 
-
-<!-- Presentation -->
-<div class="container contenue" id="presentation" >
-    <h1><i class="fas fa-grin"></i></i>Qui suis-je ?</h1>
-    <br>
-<div>
-    <p><?= $user->getDescription() ?></p>
-</div>
-    <div class="row">
-        <div class="col-md-7">
-            <h2><img src="public/icones/icone_exp.png" class="img-fluid" style="height: 50px; width: 50px">Expériences professionnelles</h2>
-            <br>
-            <ul>
-                <?php foreach ($expPros as $expPro) :?>
-
-                    <li><strong><?=$expPro->getNom_boite()." ( du ".$expPro->getDate_entrer()." au ".$expPro->getDate_sortie()." )" ?></strong></li>
-                    <p><?= $expPro->getDescription() ?></p>
-                <?php endforeach;?>
-            </ul>
-        </div>
-        <div class="col-md-5">
-            <h2><i class="fa fa-graduation-cap" aria-hidden="true"></i>Diplômes</h2>
-            <br>
-            <ul>
-                <?php foreach ($diplomes as $diplome) :?>
-
-                    <li><strong><?=$diplome->getDate_debut()." : ".$diplome->getDate_fin()." ".$diplome->getNom_ecole() ?></strong></li>
-                    <p><?= $diplome->getNom() ?></p>
-                <?php endforeach;?>
-            </ul>
-        </div>
-    </div>
-<br>
-    <form method="get" action="public/document/CV_Thierry_Halot.pdf">
-    <input type="submit" value="Télécharger mon cv" class="btn btn-primary float-lg-right" onclick="window.location='<?= "http://".$_SERVER['HTTP_HOST']."/public/document/CV_Thierry_Halot.pdf"  ?>';">
-        <br>
-    </form>
-</div>
 
 <!-- Contact -->
+<div class="pageContact">
 <div class="container contenue" id="contact">
-    <h1><i class="far fa-id-card"></i>Contact</h1>
+    <h1 class="titreSectionFront"><i class="far fa-id-card " onmouseenter="tourne(this)"></i> Contact</h1>
     <br>
     <div class="media">
-        <img class="mr-5" src="public/img/petit.jpg" alt="Generic placeholder image">
+        <img class="mr-5 photoContact" src="public/img/petit.jpg" alt="Generic placeholder image">
         <div class="media-body align-self-center">
            <p>
               Nom: <?= $user->getNom() ?><br>
@@ -262,16 +270,17 @@
             <textarea class="form-control" rows="5" name="messageContact" id="messageContact" ></textarea>
         </div>
         <div>
-        <button type="submit" class="btn btn-primary float-right">Envoyer</button>
+        <button type="submit" class="btn btn-primary float-right bouton">Envoyer</button>
             <br>
         </div>
     </form>
+</div>
 </div>
 <footer>
 <div class="container monFooter">
     <div class="text-center center-block">
         <?php foreach ($comptReseaux as $comptReseau) :?>
-        <a href="<?=$comptReseau->getLien()?>" class="<?=$comptReseau->getImg()?>"></a>
+        <a href="<?=$comptReseau->getLien()?>" class="<?=$comptReseau->getImg()?> lienReseau"></a>
         <?php endforeach;?>
 
     </div>

@@ -27,7 +27,7 @@ class DAOUser extends DAO
 //fonction qui cree un nouvelle utilisateur
     public function create($entity)
     {
-        $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, code_postal,ville,adresse,tel,mail ) VALUES('" . $entity->getNom() . "','". $entity->getPrenom() . "','" . $entity->getStatut() . "','" . $entity->getPhoto() . "','" . $entity->getDescription() . "','" . $entity->getLien_cv() . "','". $entity->getPseudo() . "','". $entity->getMdp() . "',".$entity->getCode_postal().",'".$entity->getVille()."','".$entity->getAdresse()."',".$entity->getTel().", '".$entity->getMail()."')";
+        $sql = "INSERT INTO user (nom, prenom, statut, photo, description, lien_cv, pseudo, mdp, code_postal,ville,adresse,tel,mail ) VALUES('" . $entity->getNom() . "','". $entity->getPrenom() . "','" . $entity->getStatut() . "','" . $entity->getPhoto() . "','" . addslashes($entity->getDescription()) . "','" . $entity->getLien_cv() . "','". $entity->getPseudo() . "','". $entity->getMdp() . "',".$entity->getCode_postal().",'".$entity->getVille()."','".$entity->getAdresse()."',".$entity->getTel().", '".$entity->getMail()."')";
 
         $this->getPdo()->query($sql);
 
@@ -243,7 +243,7 @@ class DAOUser extends DAO
             ."', statut='".$entity->getStatut()
             ."', photo='".$entity->getPhoto()
             ."',description='"
-            .$entity->getDescription()
+            .addslashes($entity->getDescription())
             ."', lien_cv='".$entity->getLien_cv()
             ."',pseudo='".$entity->getPseudo()
             ."', mdp='".$entity->getMdp()
@@ -261,7 +261,7 @@ class DAOUser extends DAO
         $this->getPdo()->query($sql);
     }
 
-    //fonction qui supprimme un utilisateur
+    //fonction qui supprime un utilisateur
     public function delete($id)
     {
 

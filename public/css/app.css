@@ -1,7 +1,103 @@
 
-
 /*j'adapte la hauteur de mes div a tous les ecran qui ont une résolution comprise entre:*/
+.pageAccueil{
+    background: #999999;
+    color : white;
 
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 3px;
+    padding-top: 4%;
+    border-bottom: 2px solid black;
+}
+.lienReseau{
+
+    color : silver;
+}
+.bouton{
+    background: #c1c1c1;
+    color: #eeeeee ;
+    border-color: silver;
+
+}
+.bouton:hover{
+
+    background-color: #0f4bac;
+
+}
+.tourne{
+
+
+    transform: rotate(-0.3turn);
+}
+.photoProfil{
+
+    -webkit-filter: grayscale(100%);filter: grayscale(100%);
+    transform: rotateZ(-20deg);
+}
+
+.photoContact{
+
+    border: 1px solid #ddd;
+    opacity: 0.9;
+    border-radius: 10%;
+
+}
+.suivant{
+    padding-top: 4%;
+    text-align: center;
+    font-size: large;
+}
+.slogan{
+
+    text-shadow: 2px 2px silver;
+}
+.cardProjet{
+
+    box-shadow: 3px 5px 5px silver;
+
+}
+.titreSectionFront{
+
+    text-shadow: 2px 2px silver;
+
+}
+.pageProjets{
+    padding-top: 4%;
+
+    padding-bottom: 4%;
+    background: #eeeeee;
+    text-align: justify;
+    letter-spacing: 3px;
+    border-bottom: 2px solid black;
+}
+.pagePresentation{
+
+    padding-top: 4%;
+    background: #eeeeee;
+    text-align: justify;
+    letter-spacing: 3px;
+    border-bottom: 2px solid black;
+}
+.pageCompetence{
+
+    padding-top: 4%;
+    background: #999999;
+    text-align: justify;
+    letter-spacing: 3px;
+    border-bottom: 2px solid black;
+}
+.pageContact{
+
+    padding-top: 4%;
+    background: #999999;
+    color:white;
+    padding-bottom: 4%;
+
+    text-align: justify;
+    letter-spacing: 3px;
+
+}
 
 /*Pour une largeur conprise entre 200px et 640px*/
 @media screen and (min-width: 200px) and (max-width: 640px) {

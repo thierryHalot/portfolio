@@ -28,14 +28,13 @@ function framePerso(progress, id, time) {
 function createVueComp(competence){
 
     $('#listeCompetences').append("<p class='"+competence.logo+"'>"+" "+competence.nom
-        +"</p><div class='fondBarProgresse'><div style='color: white;text-align: center;background-color: "+competence.couleur+";' class='skills "+competence.nom
-        +"' id='skill"+competence.nom+"'>"+competence.progression+"%</div></div>");
+        +"</p><div class='fondBarProgresse'><div style='color: white;text-align: center;background-color: "+competence.couleur+";' class='skills "+competence.nom.replace(" ","")
+        +"' id='skill"+competence.nom.replace(" ","")+"'>"+competence.progression+"%</div></div>");
 
     //je stocke la hauteur de ma fenetre
-    var height = $(window).height();
-    if (height > 200) {
-    framePerso(competence.progression,"skill"+competence.nom,competence.vitesse_aff);
-    }
+
+    framePerso(competence.progression,"skill"+competence.nom.replace(" ",""),competence.vitesse_aff);
+
 };
 
 
@@ -78,8 +77,8 @@ function getCompetences() {
     // framePerso(60,"skillSymfony",20);
     // framePerso(80,"skillSql",20);
 
+var height = $(window).height();
+
+
 
     getCompetences();
-
-
-

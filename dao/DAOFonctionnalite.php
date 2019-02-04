@@ -20,7 +20,7 @@ class DAOFonctionnalite extends DAO
     public function create($entity)
     {
 
-        $sql = "INSERT INTO fonctionalite (description,nom,projets_idprojets) VALUES('".$entity->getDescription()."','".$entity->getNom()."',".$entity->getIdProjet().")";
+        $sql = "INSERT INTO fonctionalite (description,nom,projets_idprojets) VALUES('".addslashes($entity->getDescription())."','".addslashes($entity->getNom())."',".$entity->getIdProjet().")";
         $this->getPdo()->query($sql);
 
 
@@ -48,7 +48,7 @@ class DAOFonctionnalite extends DAO
     public function update($entity)
     {
 
-        $sql = "UPDATE fonctionalite SET description= '".$entity->getDescription()."', nom ='".$entity->getNom()."',projets_idprojets=".$entity->getIdprojet()." WHERE idfonctionalite = ". $entity->getId_fonctionnalite();
+        $sql = "UPDATE fonctionalite SET description= '".addslashes($entity->getDescription())."', nom ='".addslashes($entity->getNom())."',projets_idprojets=".$entity->getIdprojet()." WHERE idfonctionalite = ". $entity->getId_fonctionnalite();
         $this->getPdo()->query($sql);
 
     }

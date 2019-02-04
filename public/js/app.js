@@ -22,7 +22,19 @@
 //      })
 //  }
 
+
+function tourne(event){
+
+    $(event).addClass('tourne')
+
+
+}
 $(document).ready(function(){
+
+
+
+    $('.slideEffect').effect("slide", "slow");
+
     $("#gestionUser").click(function(){
         $("#affGestionUser").slideDown('slow');
         $("#affFormUpdateUser").slideDown('slow');
@@ -45,7 +57,6 @@ $(document).ready(function(){
     $("#gestionComp").click(function(){
         $("#affGestionComp").slideDown('slow');
     });
-
 
 });
 
